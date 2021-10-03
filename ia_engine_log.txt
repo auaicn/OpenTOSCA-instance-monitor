@@ -3307,3 +3307,16 @@ Execution log:
 	[]
 12:12:59.027 [default-workqueue-5] INFO  o.o.N.org_opentosca_NodeTypes_DockerEngine__InterfaceDockerEngine:357 startContainer  - Created container 29eec79afc0ecdd91e509e014cf11d67d32b2192059e16f51e3f205572cbb266
 12:12:59.834 [default-workqueue-5] INFO  o.o.N.org_opentosca_NodeTypes_DockerEngine__InterfaceDockerEngine:366 startContainer  - Started container 29eec79afc0ecdd91e509e014cf11d67d32b2192059e16f51e3f205572cbb266 with name brave_swanson
+03-Oct-2021 12:30:53.724 INFO [http-nio-8080-exec-9] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header
+ Note: further occurrences of HTTP header parsing errors will be logged at DEBUG level.
+ java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:426)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:687)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
