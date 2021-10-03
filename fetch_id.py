@@ -9,7 +9,8 @@ def fetch_ia_engine_container_id():
   containers = containers.split('\n')
 
   if len(containers) != 1:
-    print('multiple engine-ia container is detected')
+    print('multiple engine-ia container is detected. quitting....')
+    exit()
 
   else:
     ia_engine_container_id = containers[0].split()[0]
@@ -37,18 +38,26 @@ def fetch_opentosca_generated_container_ids(log):
   
   return container_ids
 
+def get_status_of_containers(container_ids):
+  print(container_ids)
+  command = 'docker stats {}'.format(container_ids)
+  output = subprocess.getoutput(command)
+  print(output)
+
+
+
+
 def main():
 
-  # fetching container id of ia-engine
+  # get container_ids that is created by IA-engine
   ia_engine_container_id = fetch_ia_engine_container_id()
-  
   ia_engine_log = fetch_ia_engine_log(ia_engine_container_id)
-
   container_ids = fetch_opentosca_generated_container_ids(ia_engine_log)
 
   print(container_ids)
 
-
+  # get current status of containers created by IA-engine
+  # get_status_of_containers(container_ids)
 
 if __name__ == '__main__':
   main()
