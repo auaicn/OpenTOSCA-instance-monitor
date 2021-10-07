@@ -10,7 +10,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LayeredGraph(topology: example),
+      body: LayeredGraph(topology: example, hierarchy: hierarchy),
     );
   }
 }
@@ -34,4 +34,9 @@ var example = {
     {"from": 5, "to": 6},
     {"from": 5, "to": 7},
   ]
+};
+
+Map<String, List<int>> hierarchy = {
+  'RealWorld-Application_Angular-Spring-w1': [49, 220],
+  'd1_w1-wip1': [13, 144, 171]
 };

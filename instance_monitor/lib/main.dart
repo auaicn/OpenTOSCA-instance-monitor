@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:instance_monitor/constants.dart';
+import 'package:instance_monitor/providers/service_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'screens/main_screen.dart';
 
 void main() {
-  runApp(App());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ServiceProvider()),
+      ],
+      child: App(),
+    ),
+  );
 }
 
 class App extends StatelessWidget {

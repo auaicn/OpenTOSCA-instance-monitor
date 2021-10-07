@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 import 'package:instance_monitor/constants.dart';
 import 'package:instance_monitor/models/node_with_label.dart';
+import 'package:instance_monitor/screens/components/selection_panel.dart';
+import 'package:instance_monitor/screens/main_screen.dart';
 
 import 'node_template.dart';
 
 class LayeredGraph extends StatefulWidget {
   final Map topology;
+  final Map hierarchy;
 
   const LayeredGraph({
     @required this.topology,
+    @required this.hierarchy,
   });
 
   @override
@@ -38,68 +42,77 @@ class _LayeredGraphState extends State<LayeredGraph> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
+            flex: 1,
+            child: SelectionPanel(hierarchy: hierarchy),
+          ),
+          Expanded(
+            flex: 4,
             child: Padding(
               padding: const EdgeInsets.all(2 * defaultPadding),
               child: InteractiveViewer(
-                  constrained: false,
-                  boundaryMargin: EdgeInsets.all(100),
-                  minScale: 0.0001,
-                  maxScale: 10.6,
-                  child: GraphView(
-                    graph: graph,
-                    algorithm: SugiyamaAlgorithm(builder),
-                    paint: Paint()
-                      ..color = Colors.green
-                      ..strokeWidth = 1
-                      ..style = PaintingStyle.stroke,
-                    builder: (Node node) {
-                      // I can decide what widget should be shown here based on the id
-                      String id = node.key.value;
-                      String label = this.nodes[id].label;
-                      return NodeTemplate(label: label);
-                    },
-                  )),
+                constrained: false,
+                boundaryMargin: EdgeInsets.all(100),
+                minScale: 0.0001,
+                maxScale: 10.6,
+                child: GraphView(
+                  graph: graph,
+                  algorithm: SugiyamaAlgorithm(builder),
+                  paint: Paint()
+                    ..color = Colors.green
+                    ..strokeWidth = 1
+                    ..style = PaintingStyle.stroke,
+                  builder: (Node node) {
+                    // I can decide what widget should be shown here based on the id
+                    String id = node.key.value;
+                    String label = this.nodes[id].label;
+                    return NodeTemplate(label: label);
+                  },
+                ),
+              ),
             ),
           ),
-          Column(
-            children: [
-              Container(
-                width: 200,
-                padding: EdgeInsets.all(defaultPadding),
-                child: TextFormField(
-                  initialValue: builder.nodeSeparation.toString(),
-                  decoration: InputDecoration(labelText: "Node Separation"),
-                  onChanged: (text) {
-                    builder.nodeSeparation = int.tryParse(text) ?? 60;
-                    this.setState(() {});
-                  },
+          Expanded(
+            flex: 1,
+            child: Column(
+              children: [
+                Container(
+                  width: 200,
+                  padding: EdgeInsets.all(defaultPadding),
+                  child: TextFormField(
+                    initialValue: builder.nodeSeparation.toString(),
+                    decoration: InputDecoration(labelText: "Node Separation"),
+                    onChanged: (text) {
+                      builder.nodeSeparation = int.tryParse(text) ?? 60;
+                      this.setState(() {});
+                    },
+                  ),
                 ),
-              ),
-              Container(
-                width: 200,
-                padding: EdgeInsets.all(defaultPadding),
-                child: TextFormField(
-                  initialValue: builder.levelSeparation.toString(),
-                  decoration: InputDecoration(labelText: "Level Separation"),
-                  onChanged: (text) {
-                    builder.levelSeparation = int.tryParse(text) ?? 100;
-                    this.setState(() {});
-                  },
+                Container(
+                  width: 200,
+                  padding: EdgeInsets.all(defaultPadding),
+                  child: TextFormField(
+                    initialValue: builder.levelSeparation.toString(),
+                    decoration: InputDecoration(labelText: "Level Separation"),
+                    onChanged: (text) {
+                      builder.levelSeparation = int.tryParse(text) ?? 100;
+                      this.setState(() {});
+                    },
+                  ),
                 ),
-              ),
-              Container(
-                width: 200,
-                padding: EdgeInsets.all(defaultPadding),
-                child: TextFormField(
-                  initialValue: builder.orientation.toString(),
-                  decoration: InputDecoration(labelText: "Orientation"),
-                  onChanged: (text) {
-                    builder.orientation = int.tryParse(text) ?? 3;
-                    this.setState(() {});
-                  },
+                Container(
+                  width: 200,
+                  padding: EdgeInsets.all(defaultPadding),
+                  child: TextFormField(
+                    initialValue: builder.orientation.toString(),
+                    decoration: InputDecoration(labelText: "Orientation"),
+                    onChanged: (text) {
+                      builder.orientation = int.tryParse(text) ?? 3;
+                      this.setState(() {});
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
