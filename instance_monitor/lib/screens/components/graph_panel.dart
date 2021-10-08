@@ -3,6 +3,7 @@ import 'package:graphview/GraphView.dart';
 import 'package:instance_monitor/constants.dart';
 import 'package:instance_monitor/providers/hierarchy_provider.dart';
 import 'package:instance_monitor/providers/topology_provider.dart';
+import 'package:instance_monitor/screens/components/guide.dart';
 import 'package:instance_monitor/screens/components/node_template.dart';
 import 'package:provider/provider.dart';
 
@@ -34,16 +35,7 @@ class _GraphPanelState extends State<GraphPanel> with TickerProviderStateMixin {
         bool isInstanceSelected = (hierarchyProvider.isServiceTemplateSelected() && hierarchyProvider.isInstanceIdSelected());
 
         if (!isInstanceSelected) {
-          return Container(
-            alignment: Alignment.center,
-            child: Text(
-              'please select \n1. service templates\n2. instances\n to show topologies',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline6.apply(
-                    color: Colors.white,
-                  ),
-            ),
-          );
+          return Guide();
         }
 
         return Column(

@@ -10,53 +10,55 @@ class ServiceSelectionPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: defaultPadding),
-      child: Column(
-        children: [
-          DrawerHeader(
-            child: Container(
-              height: 400,
-              alignment: Alignment.center,
-              child: Text('Service\nTemplates'),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            DrawerHeader(
+              child: Container(
+                height: 400,
+                alignment: Alignment.center,
+                child: Text('Service\nTemplates'),
+              ),
             ),
-          ),
-          Consumer<HierarchyProvider>(builder: (context, hierarchyProvider, child) {
-            List<String> serviceTemplates = [...hierarchyProvider.hierarchy.keys];
-            logger.i('$serviceTemplates');
+            Consumer<HierarchyProvider>(builder: (context, hierarchyProvider, child) {
+              List<String> serviceTemplates = [...hierarchyProvider.hierarchy.keys];
+              logger.i('$serviceTemplates');
 
-            return ListView.separated(
-              shrinkWrap: true,
-              itemCount: serviceTemplates.length,
-              separatorBuilder: (context, index) {
-                return SizedBox(height: 16);
-              },
-              itemBuilder: (BuildContext context, int index) {
-                String serviceTemplateName = serviceTemplates[index];
+              return ListView.separated(
+                shrinkWrap: true,
+                itemCount: serviceTemplates.length,
+                separatorBuilder: (context, index) {
+                  return SizedBox(height: 16);
+                },
+                itemBuilder: (BuildContext context, int index) {
+                  String serviceTemplateName = serviceTemplates[index];
 
-                return ListTile(
-                  selected: serviceTemplateName == hierarchyProvider.selectedServiceTemplate,
-                  selectedTileColor: Colors.white10,
-                  leading: SvgPicture.asset(
-                    'assets/icons/menu_dashboard.svg',
-                    color: Colors.white54,
-                    height: 16,
-                  ),
-                  title: Text(
-                    serviceTemplateName,
-                    style: TextStyle(
-                      fontSize: 10,
+                  return ListTile(
+                    selected: serviceTemplateName == hierarchyProvider.selectedServiceTemplate,
+                    selectedTileColor: Colors.white10,
+                    leading: SvgPicture.asset(
+                      'assets/icons/menu_dashboard.svg',
                       color: Colors.white54,
+                      height: 16,
                     ),
-                  ),
-                  onTap: () {
-                    hierarchyProvider.updateServiceTemplate(selectedServiceTemplate: serviceTemplateName);
+                    title: Text(
+                      serviceTemplateName,
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.white54,
+                      ),
+                    ),
+                    onTap: () {
+                      hierarchyProvider.updateServiceTemplate(selectedServiceTemplate: serviceTemplateName);
 
-                    logger.d('pressed $serviceTemplateName');
-                  },
-                );
-              },
-            );
-          }),
-        ],
+                      logger.d('pressed $serviceTemplateName');
+                    },
+                  );
+                },
+              );
+            }),
+          ],
+        ),
       ),
     );
   }

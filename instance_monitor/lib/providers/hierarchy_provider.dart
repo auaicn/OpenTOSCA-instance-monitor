@@ -60,5 +60,5 @@ class HierarchyProvider extends ChangeNotifier {
 
 Map<String, List<int>> hierarchyExample = {
   'RealWorld-Application_Angular-Spring-w1': [49, 220],
-  'd1_w1-wip1': [13, 144, 171]
+  'd1_w1-wip1': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77]
 };

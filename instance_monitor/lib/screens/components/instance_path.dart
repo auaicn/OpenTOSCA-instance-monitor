@@ -18,17 +18,13 @@ class InstancePath extends StatelessWidget {
               if (hierarchyProvider.isServiceTemplateSelected())
                 Text(
                   '${hierarchyProvider.selectedServiceTemplate}',
-                  style: Theme.of(context).textTheme.bodyText1.apply(
-                        color: Colors.blueAccent,
-                      ),
+                  style: Theme.of(context).textTheme.bodyText1.apply(color: Colors.blueAccent),
                 ),
               SizedBox(width: defaultHalfPadding),
               if (hierarchyProvider.isInstanceIdSelected())
                 Text(
                   '> ${hierarchyProvider.selectedInstanceId}',
-                  style: Theme.of(context).textTheme.bodyText1.apply(
-                        color: Colors.blueGrey,
-                      ),
+                  style: Theme.of(context).textTheme.bodyText1.apply(color: Colors.blueGrey),
                 ),
             ],
           ),
