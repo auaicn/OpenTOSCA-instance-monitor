@@ -38,43 +38,46 @@ class _GraphPanelState extends State<GraphPanel> with TickerProviderStateMixin {
           return Guide();
         }
 
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            InstancePath(),
-            Expanded(
-              child: FadeTransition(
-                opacity: animation,
-                child: Container(
-                  color: Colors.white10,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(defaultPadding),
-                  child: InteractiveViewer(
-                    constrained: false,
-                    boundaryMargin: EdgeInsets.all(400),
-                    minScale: 0.00001,
-                    maxScale: 20.0,
-                    child: Center(
-                      child: GraphView(
-                        graph: topologyProvider.currentGraph,
-                        algorithm: SugiyamaAlgorithm(topologyProvider.builder),
-                        paint: Paint()
-                          ..color = Colors.green
-                          ..strokeWidth = 1
-                          ..style = PaintingStyle.stroke,
-                        builder: (Node node) {
-                          // I can decide what widget should be shown here based on the id
-                          String id = node.key.value;
-                          String label = topologyProvider.nodeById[id].label;
-                          return NodeTemplate(label: label);
-                        },
+        return Container(
+          color: Colors.white10,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              InstancePath(),
+              Expanded(
+                child: FadeTransition(
+                  opacity: animation,
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(defaultPadding),
+                    child: InteractiveViewer(
+                      constrained: false,
+                      boundaryMargin: EdgeInsets.all(400),
+                      minScale: 0.00001,
+                      maxScale: 20.0,
+                      child: Center(
+                        child: GraphView(
+                          graph: topologyProvider.currentGraph,
+                          algorithm: SugiyamaAlgorithm(topologyProvider.builder),
+                          paint: Paint()
+                            ..color = Colors.green
+                            ..strokeWidth = 1
+                            ..style = PaintingStyle.stroke,
+                          builder: (Node node) {
+                            // I can decide what widget should be shown here based on the id
+                            String id = node.key.value;
+                            String label = topologyProvider.nodeById[id].label;
+                            return NodeTemplate(label: label);
+                          },
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       },
     );

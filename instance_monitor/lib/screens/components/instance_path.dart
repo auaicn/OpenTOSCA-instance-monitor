@@ -9,9 +9,11 @@ class InstancePath extends StatelessWidget {
     return Consumer<HierarchyProvider>(
       builder: (context, hierarchyProvider, child) {
         return Container(
-          height: 60,
-          width: double.infinity,
+          padding: EdgeInsets.all(defaultHalfPadding),
+          margin: EdgeInsets.all(defaultHalfPadding),
+          color: bgColor,
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(width: defaultHalfPadding),

@@ -10,17 +10,28 @@ class InstanceSelectionPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: defaultPadding),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            DrawerHeader(
-              child: Container(
-                height: 400,
-                alignment: Alignment.center,
-                child: Text('Instances'),
+      child: Column(
+        children: [
+          DrawerHeader(
+            child: Container(
+              height: 400,
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Instances', textAlign: TextAlign.center),
+                  SizedBox(height: defaultHalfSpacing),
+                  Text(
+                    'scroll to browse',
+                    style: Theme.of(context).textTheme.caption.apply(color: Colors.grey),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
             ),
-            Consumer<HierarchyProvider>(builder: (context, hierarchyProvider, child) {
+          ),
+          Consumer<HierarchyProvider>(
+            builder: (context, hierarchyProvider, child) {
               String selectedServiceTemplate = hierarchyProvider.selectedServiceTemplate;
 
               if (selectedServiceTemplate == null) {
@@ -34,41 +45,45 @@ class InstanceSelectionPanel extends StatelessWidget {
               var hierarchy = hierarchyProvider.hierarchy;
               List<String> instanceIds = hierarchy[selectedServiceTemplate];
 
-              return ListView.separated(
-                shrinkWrap: true,
-                itemCount: instanceIds.length,
-                separatorBuilder: (context, index) {
-                  return SizedBox(height: 16);
-                },
-                itemBuilder: (BuildContext context, int index) {
-                  String instanceId = instanceIds[index];
-                  logger.i('instance id: $instanceId');
+              return Expanded(
+                child: ListView.separated(
+                  shrinkWrap: false,
+                  physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  controller: ScrollController(),
+                  itemCount: instanceIds.length,
+                  separatorBuilder: (context, index) {
+                    return SizedBox(height: 16);
+                  },
+                  itemBuilder: (BuildContext context, int index) {
+                    String instanceId = instanceIds[index];
+                    logger.i('instance id: $instanceId');
 
-                  return ListTile(
-                    selected: instanceId == hierarchyProvider.selectedInstanceId,
-                    selectedTileColor: Colors.white10,
-                    leading: Image.asset(
-                      'assets/icons/instance.png',
-                      height: 16,
-                      width: 16,
-                    ),
-                    title: Text(
-                      '$instanceId',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.white54,
+                    return ListTile(
+                      selected: instanceId == hierarchyProvider.selectedInstanceId,
+                      selectedTileColor: Colors.white10,
+                      leading: Image.asset(
+                        'assets/icons/instance.png',
+                        height: 16,
+                        width: 16,
                       ),
-                    ),
-                    onTap: () {
-                      hierarchyProvider.updateInstanceId(selectedInstanceId: instanceId);
-                      logger.d('pressed $instanceId');
-                    },
-                  );
-                },
+                      title: Text(
+                        '$instanceId',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white54,
+                        ),
+                      ),
+                      onTap: () {
+                        hierarchyProvider.updateInstanceId(selectedInstanceId: instanceId);
+                        logger.d('pressed $instanceId');
+                      },
+                    );
+                  },
+                ),
               );
-            }),
-          ],
-        ),
+            },
+          ),
+        ],
       ),
     );
   }
