@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instance_monitor/logger.dart';
 
 class NodeTemplate extends StatefulWidget {
   final String label;

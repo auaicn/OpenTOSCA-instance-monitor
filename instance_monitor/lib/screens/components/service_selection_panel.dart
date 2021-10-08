@@ -33,6 +33,8 @@ class ServiceSelectionPanel extends StatelessWidget {
                 String serviceTemplateName = serviceTemplates[index];
 
                 return ListTile(
+                  selected: serviceTemplateName == hierarchyProvider.selectedServiceTemplate,
+                  selectedTileColor: Colors.white10,
                   leading: SvgPicture.asset(
                     'assets/icons/menu_dashboard.svg',
                     color: Colors.white54,

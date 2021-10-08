@@ -44,6 +44,8 @@ class InstanceSelectionPanel extends StatelessWidget {
                 logger.i('instance id: $instanceId');
 
                 return ListTile(
+                  selected: instanceId == hierarchyProvider.selectedInstanceId,
+                  selectedTileColor: Colors.white10,
                   leading: Image.asset(
                     'assets/icons/instance.png',
                     height: 16,
