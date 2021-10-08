@@ -4,7 +4,7 @@ var logger = Logger(
   printer: PrettyPrinter(
     printEmojis: true,
     printTime: false,
-    lineLength: 200,
+    lineLength: 120,
     methodCount: 0,
   ),
 );
