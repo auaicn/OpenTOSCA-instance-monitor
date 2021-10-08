@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Guide extends StatelessWidget {
+class GuideText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

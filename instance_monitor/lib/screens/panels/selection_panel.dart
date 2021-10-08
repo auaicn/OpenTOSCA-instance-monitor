@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instance_monitor/providers/hierarchy_provider.dart';
-import 'package:instance_monitor/screens/components/instance_selection_panel.dart';
-import 'package:instance_monitor/screens/components/service_selection_panel.dart';
+import 'package:instance_monitor/screens/panels/instance_selection_panel.dart';
+import 'package:instance_monitor/screens/panels/service_selection_panel.dart';
 import 'package:provider/provider.dart';
 
 class SelectionPanel extends StatelessWidget {

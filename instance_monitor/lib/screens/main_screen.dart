@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:instance_monitor/screens/components/control_panel.dart';
-import 'package:instance_monitor/screens/components/selection_panel.dart';
-import 'components/graph_panel.dart';
-import 'components/information_panel.dart';
+import 'package:instance_monitor/screens/panels/control_panel.dart';
+import 'package:instance_monitor/screens/panels/selection_panel.dart';
+import 'panels/graph_panel.dart';
+import 'panels/information_panel.dart';
 
 class MainScreen extends StatefulWidget {
   @override

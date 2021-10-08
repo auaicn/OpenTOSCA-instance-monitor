@@ -40,20 +40,21 @@ class _NodeTemplateState extends State<NodeTemplate> {
             ),
           ),
         ),
-        Visibility(
-          visible: _isExpanded,
-          child: Positioned(
-            top: 60,
-            child: GestureDetector(
-              onTap: onTappedItem,
-              child: Container(
-                height: 100,
-                width: 100,
-                color: Colors.blueGrey,
-              ),
-            ),
-          ),
-        ),
+        // FIXME - Deprecated for now
+        // Visibility(
+        //   visible: _isExpanded,
+        //   child: Positioned(
+        //     top: 60,
+        //     child: GestureDetector(
+        //       onTap: onTappedItem,
+        //       child: Container(
+        //         height: 100,
+        //         width: 100,
+        //         color: Colors.blueGrey,
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

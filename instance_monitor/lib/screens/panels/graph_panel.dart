@@ -3,11 +3,11 @@ import 'package:graphview/GraphView.dart';
 import 'package:instance_monitor/constants.dart';
 import 'package:instance_monitor/providers/hierarchy_provider.dart';
 import 'package:instance_monitor/providers/topology_provider.dart';
-import 'package:instance_monitor/screens/components/guide.dart';
+import 'package:instance_monitor/screens/components/guide_text.dart';
 import 'package:instance_monitor/screens/components/node_template.dart';
 import 'package:provider/provider.dart';
 
-import 'instance_path.dart';
+import '../components/instance_path.dart';
 
 class GraphPanel extends StatefulWidget {
   @override
@@ -35,7 +35,7 @@ class _GraphPanelState extends State<GraphPanel> with TickerProviderStateMixin {
         bool isInstanceSelected = (hierarchyProvider.isServiceTemplateSelected() && hierarchyProvider.isInstanceIdSelected());
 
         if (!isInstanceSelected) {
-          return Guide();
+          return GuideText();
         }
 
         return Container(

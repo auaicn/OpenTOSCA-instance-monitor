@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:instance_monitor/constants.dart';
 import 'package:instance_monitor/providers/hierarchy_provider.dart';
 import 'package:instance_monitor/providers/topology_provider.dart';
-import 'package:instance_monitor/screens/components/guide.dart';
+import 'package:instance_monitor/screens/components/guide_text.dart';
 import 'package:provider/provider.dart';
 
 class ControlPanel extends StatefulWidget {
@@ -16,7 +16,7 @@ class _ControlPanelState extends State<ControlPanel> {
     return Consumer2<HierarchyProvider, TopologyProvider>(
       builder: (context, hierarchyProvider, topologyProvider, child) {
         if (!hierarchyProvider.isInstanceIdSelected()) {
-          return Guide();
+          return GuideText();
         }
 
         return Center(
