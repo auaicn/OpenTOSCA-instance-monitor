@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:instance_monitor/constants.dart';
-import 'package:instance_monitor/providers/service_provider.dart';
+import 'package:instance_monitor/providers/hierarchy_provider.dart';
+import 'package:instance_monitor/providers/topology_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/main_screen.dart';
@@ -10,7 +11,8 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ServiceProvider()),
+        ChangeNotifierProvider(create: (_) => HierarchyProvider()),
+        ChangeNotifierProvider(create: (_) => TopologyProvider()),
       ],
       child: App(),
     ),
