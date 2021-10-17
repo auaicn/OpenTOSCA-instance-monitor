@@ -37,10 +37,7 @@ class _InformationPanelState extends State<InformationPanel> {
                 child: FutureBuilder<Response>(
                   future: containers,
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    logger.i('building result');
                     if (!snapshot.hasData) {
-                      logger.i('no data');
-
                       return CupertinoActivityIndicator();
                     } else if (snapshot.hasData) {
                       Response value = snapshot.data;
@@ -66,9 +63,7 @@ class _InformationPanelState extends State<InformationPanel> {
   }
 
   void fetchAvailableContainers() {
-    logger.d('$baseUrl/containers/json');
-
-    Uri uri = Uri.parse('$baseUrl/containers/json');
+    Uri uri = Uri.parse('${serverUrlUsingPort(port: 2220)}/containers/json');
 
     setState(() {
       containers = loggerHttpClient.get(
@@ -79,4 +74,8 @@ class _InformationPanelState extends State<InformationPanel> {
   }
 }
 
-String baseUrl = 'http://ec2-3-35-68-199.ap-northeast-2.compute.amazonaws.com:2220/';
+String serverBaseUrl = 'http://ec2-13-124-245-193.ap-northeast-2.compute.amazonaws.com';
+
+String serverUrlUsingPort({int port}) {
+  return '$serverBaseUrl:$port';
+}

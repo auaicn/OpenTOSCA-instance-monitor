@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:instance_monitor/screens/panels/information_panel.dart';
+import 'package:instance_monitor/utilities/http_client.dart';
 
 class HierarchyProvider extends ChangeNotifier {
   Map<String, List<String>> hierarchy = {};
@@ -10,24 +14,43 @@ class HierarchyProvider extends ChangeNotifier {
     fetchData();
   }
 
-  void fetchData() {
-    hierarchy.clear();
-
-    hierarchyExample.keys.forEach((serviceTemplateKey) {
-      List<int> instanceIds = hierarchyExample[serviceTemplateKey];
-
-      // convert id into string for ease of use
-      hierarchy[serviceTemplateKey] = [...instanceIds.map((instanceId) => instanceId.toString())];
-    });
-
+  void fetchData() async {
     selectedServiceTemplate = null;
     selectedInstanceId = null;
+
+    loadServiceTemplates().then((names) => loadInstances(names));
+  }
+
+  Future loadServiceTemplates() async {
+    String target = serverUrlUsingPort(port: 8000) + '/';
+    Uri uri = Uri.parse(target);
+    var response = await loggerHttpClient.get(uri);
+    List json = jsonDecode(utf8.decode(response.bodyBytes));
+    return json;
+  }
+
+  void loadInstances(List names) async {
+    hierarchy.clear();
+    names.forEach((name) async {
+      loadInstance(name: name);
+    });
+  }
+
+  void loadInstance({String name}) async {
+    String target = serverUrlUsingPort(port: 8000) + '/$name' + '/instances';
+    Uri uri = Uri.parse(target);
+    var response = await loggerHttpClient.get(uri);
+    List json = jsonDecode(utf8.decode(response.bodyBytes));
+
+    hierarchy[name] = [];
+    json.forEach((id) {
+      hierarchy[name].add(id.toString());
+    });
+    notifyListeners();
   }
 
   void updateServiceTemplate({@required String selectedServiceTemplate}) {
     if (this.selectedServiceTemplate == selectedServiceTemplate) {
-      // do nothing
-
       return;
     }
 
@@ -39,8 +62,6 @@ class HierarchyProvider extends ChangeNotifier {
 
   void updateInstanceId({@required String selectedInstanceId}) {
     if (this.selectedInstanceId == selectedInstanceId) {
-      // do nothing
-
       return;
     }
 
@@ -57,14 +78,3 @@ class HierarchyProvider extends ChangeNotifier {
     return (this.selectedInstanceId != null);
   }
 }
-
-Map<String, List<int>> hierarchyExample = {
-  'RealWorld-Application_Angular-Spring-w1': [49, 220],
-  'd1_w1-wip1': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-  'd1_w1-wip2': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-  'd1_w1-wip3': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-  'd1_w1-wip4': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-  'd1_w1-wip5': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-  'd1_w1-wip6': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-  'd1_w1-wip7': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-};

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instance_monitor/constants.dart';
 import 'package:instance_monitor/logger.dart';
 import 'package:instance_monitor/providers/hierarchy_provider.dart';
+import 'package:instance_monitor/providers/topology_provider.dart';
 import 'package:provider/provider.dart';
 
 class ServiceSelectionPanel extends StatelessWidget {
@@ -30,8 +31,8 @@ class ServiceSelectionPanel extends StatelessWidget {
               ),
             ),
           ),
-          Consumer<HierarchyProvider>(
-            builder: (context, hierarchyProvider, child) {
+          Consumer2<HierarchyProvider, TopologyProvider>(
+            builder: (context, hierarchyProvider, topology, child) {
               List<String> serviceTemplates = [...hierarchyProvider.hierarchy.keys];
               logger.i('$serviceTemplates');
 
@@ -59,8 +60,7 @@ class ServiceSelectionPanel extends StatelessWidget {
                       ),
                       onTap: () {
                         hierarchyProvider.updateServiceTemplate(selectedServiceTemplate: serviceTemplateName);
-
-                        logger.d('pressed $serviceTemplateName');
+                        topology.loadSelectedTopology(serviceTemplateName: hierarchyProvider.selectedServiceTemplate);
                       },
                     );
                   },

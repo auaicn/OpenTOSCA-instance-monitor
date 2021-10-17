@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
+import 'package:instance_monitor/logger.dart';
 import 'package:instance_monitor/models/node_with_label.dart';
+import 'package:instance_monitor/screens/panels/information_panel.dart';
+import 'package:instance_monitor/utilities/http_client.dart';
 
 class TopologyProvider extends ChangeNotifier {
-  Map topology;
+  Map _topology = {};
 
   SugiyamaConfiguration builder = SugiyamaConfiguration();
   Map<String, NodeWithLabel> nodeById = {};
@@ -11,27 +16,34 @@ class TopologyProvider extends ChangeNotifier {
   Graph currentGraph;
 
   TopologyProvider() {
-    initializeBuilder();
-
-    fetchData();
+    _initializeBuilder();
   }
 
-  void fetchData() {
-    topology = topologyExample;
-
-    currentGraph = graphFromJson(topology);
+  Future loadSelectedTopology({@required String serviceTemplateName}) {
+    _loadTopology(serviceTemplateName).then((topology) => _drawGraph(topology));
   }
 
-  void fetch({@required String serviceTemplateName}) {
-    /*
-    TODO using get request, fetch TOSCA topology file with given ServiceTemplate
+  Future _loadTopology(String serviceTemplateName) async {
+    String target = '${serverUrlUsingPort(port: 8000)}/$serviceTemplateName/topology';
+    Uri uri = Uri.parse(target);
+    var response = await loggerHttpClient.get(uri);
+    Map json = jsonDecode(utf8.decode(response.bodyBytes));
 
-    set topology 
-    */
+    Map topology = {};
+    if (json['nodes'] != null) {
+      List nodes = json['nodes'];
+      topology['nodes'] = nodes;
+    }
+    if (json['edges'] != null) {
+      List edges = json['edges'];
+      topology['edges'] = edges;
+    }
 
-    topology = topologyExample;
+    return topology;
+  }
 
-    currentGraph = graphFromJson(topology);
+  void _drawGraph(Map topology) {
+    currentGraph = _graphFromJson(_topology);
   }
 
   void updateNodeSeperation({@required int newValue}) {
@@ -52,14 +64,14 @@ class TopologyProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void initializeBuilder() {
+  void _initializeBuilder() {
     builder
       ..nodeSeparation = (60)
       ..levelSeparation = (100)
       ..orientation = SugiyamaConfiguration.ORIENTATION_LEFT_RIGHT;
   }
 
-  Graph graphFromJson(Map topologyInJson) {
+  Graph _graphFromJson(Map topologyInJson) {
     Graph graph = Graph();
 
     var nodes = topologyInJson['nodes'];
@@ -88,24 +100,3 @@ class TopologyProvider extends ChangeNotifier {
     return graph;
   }
 }
-
-var topologyExample = {
-  "nodes": [
-    {"id": 1, "label": 'circle'},
-    {"id": 2, "label": 'ellipse'},
-    {"id": 3, "label": 'database'},
-    {"id": 4, "label": 'box'},
-    {"id": 5, "label": 'diamond'},
-    {"id": 6, "label": 'dot'},
-    {"id": 7, "label": 'square'},
-    {"id": 8, "label": 'triangle'},
-  ],
-  "edges": [
-    {"from": 1, "to": 2},
-    {"from": 2, "to": 3},
-    {"from": 2, "to": 4},
-    {"from": 2, "to": 5},
-    {"from": 5, "to": 6},
-    {"from": 5, "to": 7},
-  ]
-};
