@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
-import 'package:instance_monitor/logger.dart';
 import 'package:instance_monitor/models/node_with_label.dart';
 import 'package:instance_monitor/screens/panels/information_panel.dart';
 import 'package:instance_monitor/utilities/http_client.dart';
@@ -20,16 +19,18 @@ class TopologyProvider extends ChangeNotifier {
   }
 
   Future loadSelectedTopology({@required String serviceTemplateName}) {
-    _loadTopology(serviceTemplateName).then((topology) => _drawGraph(topology));
+    _loadTopology(serviceTemplateName).then((topology) {
+      _drawGraph(topology);
+    });
   }
 
-  Future _loadTopology(String serviceTemplateName) async {
+  Future<Map<String, List>> _loadTopology(String serviceTemplateName) async {
     String target = '${serverUrlUsingPort(port: 8000)}/$serviceTemplateName/topology';
     Uri uri = Uri.parse(target);
     var response = await loggerHttpClient.get(uri);
     Map json = jsonDecode(utf8.decode(response.bodyBytes));
 
-    Map topology = {};
+    Map<String, List> topology = {};
     if (json['nodes'] != null) {
       List nodes = json['nodes'];
       topology['nodes'] = nodes;
@@ -42,8 +43,8 @@ class TopologyProvider extends ChangeNotifier {
     return topology;
   }
 
-  void _drawGraph(Map topology) {
-    currentGraph = _graphFromJson(_topology);
+  void _drawGraph(Map<String, List> topology) {
+    currentGraph = _graphFromJson(topology);
   }
 
   void updateNodeSeperation({@required int newValue}) {
@@ -71,7 +72,7 @@ class TopologyProvider extends ChangeNotifier {
       ..orientation = SugiyamaConfiguration.ORIENTATION_LEFT_RIGHT;
   }
 
-  Graph _graphFromJson(Map topologyInJson) {
+  Graph _graphFromJson(Map<String, List> topologyInJson) {
     Graph graph = Graph();
 
     var nodes = topologyInJson['nodes'];

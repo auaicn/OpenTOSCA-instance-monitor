@@ -9,6 +9,9 @@ class HierarchyProvider extends ChangeNotifier {
 
   String selectedServiceTemplate;
   String selectedInstanceId;
+  String selectedContainerId;
+
+  List<String> containerIds = [];
 
   HierarchyProvider() {
     fetchData();
@@ -56,18 +59,50 @@ class HierarchyProvider extends ChangeNotifier {
 
     this.selectedServiceTemplate = selectedServiceTemplate;
     this.selectedInstanceId = null;
+    this.selectedContainerId = null;
 
     notifyListeners();
   }
 
-  void updateInstanceId({@required String selectedInstanceId}) {
+  void updateInstanceId({@required String selectedInstanceId}) async {
     if (this.selectedInstanceId == selectedInstanceId) {
       return;
     }
 
     this.selectedInstanceId = selectedInstanceId;
+    this.selectedContainerId = null;
+    await _loadContainerIds();
 
     notifyListeners();
+  }
+
+  void updateContainerId({@required String selectedInstanceId}) {
+    if (this.selectedContainerId == selectedContainerId) {
+      return;
+    }
+
+    this.selectedContainerId = selectedContainerId;
+
+    notifyListeners();
+  }
+
+  void _loadContainerIds() async {
+    String target = '${serverUrlUsingPort(port: 8000)}/$selectedServiceTemplate/instances/$selectedInstanceId';
+    Uri uri = Uri.parse(target);
+    var response = await loggerHttpClient.get(uri);
+    List json = jsonDecode(utf8.decode(response.bodyBytes));
+
+    containerIds.clear();
+    json.forEach((containerId) {
+      containerIds.add(containerId);
+    });
+  }
+
+  void _loadSingleContainerMetrics() async {
+    String target = '${serverUrlUsingPort(port: 2220)}/containers/$selectedContainerId/stats?stream=false';
+    Uri uri = Uri.parse(target);
+    var response = await loggerHttpClient.get(uri);
+    Map json = jsonDecode(utf8.decode(response.bodyBytes));
   }
 
   bool isServiceTemplateSelected() {
