@@ -54,7 +54,7 @@ def get_status_of_containers(container_ids):
 
 
 def get_installed_csar_names():
-  response_in_json = requests.get('http://ec2-3-35-68-199.ap-northeast-2.compute.amazonaws.com:1337/csars').json()
+  response_in_json = requests.get('http://ec2-13-124-245-193.ap-northeast-2.compute.amazonaws.com:1337/csars').json()
 
   response_in_json_pretty = make_pretty(response_in_json)
   # print(response_in_json_pretty)
@@ -74,7 +74,7 @@ def make_pretty(json_object):
   return json.dumps(json_object, indent=2, sort_keys=True)
 
 def get_instance_ids(csar_name):
-  url= "http://ec2-3-35-68-199.ap-northeast-2.compute.amazonaws.com:1337/csars/{}.csar/servicetemplates/{}/instances".format(csar_name,csar_name)
+  url= "http://ec2-13-124-245-193.ap-northeast-2.compute.amazonaws.com:1337/csars/{}.csar/servicetemplates/{}/instances".format(csar_name,csar_name)
   response_in_json = requests.get(url).json()
   service_template_instances = response_in_json.get('service_template_instances')
   ids = [instance.get('id') for instance in service_template_instances]

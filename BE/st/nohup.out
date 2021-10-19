@@ -1,0 +1,968 @@
+Watching for file changes with StatReloader
+[17/Oct/2021 06:28:08] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+Bad Request: /a/topology
+[17/Oct/2021 06:28:11] "GET /a/topology HTTP/1.1" 400 11
+[17/Oct/2021 06:28:14] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 06:28:20] "GET /RealWorld-Application_Angular-Spring-w1/topology HTTP/1.1" 200 779
+[17/Oct/2021 07:30:24] code 400, message Bad request version ('À\x14À')
+[17/Oct/2021 07:30:24] You're accessing the development server over HTTPS, but it only supports HTTP.
+
+[17/Oct/2021 08:00:36] "GET /RealWorld-Application_Angular-Spring-w1/topology HTTP/1.1" 200 779
+Not Found: /favicon.ico
+[17/Oct/2021 08:00:36] "GET /favicon.ico HTTP/1.1" 404 2715
+[17/Oct/2021 08:02:37] "GET /RealWorld-Application_Angular-Spring-w1/topology HTTP/1.1" 200 779
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/topology.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 17, 2021 - 06:27:52
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[17/Oct/2021 08:03:25] "GET /RealWorld-Application_Angular-Spring-w1/topology HTTP/1.1" 200 779
+[17/Oct/2021 08:03:29] "GET /RealWorld-Application_Angular-Spring-w1/topology HTTP/1.1" 200 779
+[17/Oct/2021 08:04:00] "GET /RealWorld-Application_Angular-Spring-w1/topology HTTP/1.1" 200 779
+[17/Oct/2021 08:04:02] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+Watching for file changes with StatReloader
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 17, 2021 - 08:59:29
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py changed, reloading.
+Performing system checks...
+
+[{'id': 'PetClinic_MySQL-OpenStack-w1.csar', 'description': 'Simple Java web application connecting to a MySQL database.', '_links': {'self': {'href': 'http://localhost:1337/csars/PetClinic_MySQL-OpenStack-w1.csar'}}}, {'id': 'MyTinyToDo-MySql_Docker-w1.csar', 'description': 'Installs the PHP Application MyTinyToDo as a Docker Container on a Docker Engine which\n        connects to an Ubuntu Docker Container running a MySQL database.\n    ', '_links': {'self': {'href': 'http://localhost:1337/csars/MyTinyToDo-MySql_Docker-w1.csar'}}}, {'id': 'RealWorld-Application_Angular-Spring-w1.csar', 'description': '"The mother of all demo apps" — Exemplary fullstack Medium.com clone powered by React,\n        Angular, Node, Django, and many more\n    ', '_links': {'self': {'href': 'http://localhost:1337/csars/RealWorld-Application_Angular-Spring-w1.csar'}}}]
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:00:32
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:01:19
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/urls.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:01:27
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/management/commands/runserver.py", line 118, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/management/base.py", line 419, in check
+    all_issues = checks.run_checks(
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/registry.py", line 76, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/urls.py", line 13, in check_url_config
+    return check_resolver(resolver)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/urls.py", line 23, in check_resolver
+    return check_method()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 412, in check
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 598, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 591, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/st/urls.py", line 21, in <module>
+    path('', include('service.urls'), name = 'servicetemplate'),
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/urls.py", line 9, in <module>
+    path('', views.servicetemplate),    
+AttributeError: module 'service.views' has no attribute 'servicetemplate'
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/urls.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/management/commands/runserver.py", line 118, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/management/base.py", line 419, in check
+    all_issues = checks.run_checks(
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/registry.py", line 76, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/urls.py", line 13, in check_url_config
+    return check_resolver(resolver)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/urls.py", line 23, in check_resolver
+    return check_method()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 412, in check
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 598, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 591, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/st/urls.py", line 21, in <module>
+    path('', include('service.urls'), name = 'servicetemplate'),
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/urls.py", line 9, in <module>
+    path('', views.service_template),    
+AttributeError: module 'service.views' has no attribute 'service_template'
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+Watching for file changes with StatReloader
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:02:57
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 53, in service_template
+    return HttpResponse(json.dumps(instances(), status = status.HTTP_200_OK))
+  File "/usr/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+TypeError: __init__() got an unexpected keyword argument 'status'
+[17/Oct/2021 09:03:29] "GET / HTTP/1.1" 500 64304
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 53, in service_template
+    return HttpResponse(json.dumps(instances(), status = status.HTTP_200_OK))
+  File "/usr/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+TypeError: __init__() got an unexpected keyword argument 'status'
+[17/Oct/2021 09:04:10] "GET / HTTP/1.1" 500 64699
+[17/Oct/2021 09:04:38] "GET /RealWorld-Application_Angular-Spring-w1/instances/30 HTTP/1.1" 200 136
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/urls.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:03:13
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[17/Oct/2021 09:05:23] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:05:24] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 53, in service_template
+    return HttpResponse(json.dumps(instances(), status = status.HTTP_200_OK))
+  File "/usr/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+TypeError: __init__() got an unexpected keyword argument 'status'
+[17/Oct/2021 09:05:29] "GET / HTTP/1.1" 500 64836
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:05:19
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[17/Oct/2021 09:05:59] "GET / HTTP/1.1" 200 120
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:05:57
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[17/Oct/2021 09:06:51] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 09:06:58] "GET /RealWorld-Application_Angular-Spring-w1/topology HTTP/1.1" 200 779
+[17/Oct/2021 09:07:01] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:07:04] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+Internal Server Error: /serviceTemplateName/instances
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 36, in instance
+    csar_instance, instance_container =get_csar_instances_containers_id()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_ids.py", line 30, in get_csar_instances_containers_id
+    csar_instance_dict, instance_container_dict = ids()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py", line 20, in ids
+    response = requests.get(url).json().get("service_template_instances")
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/requests/models.py", line 910, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[17/Oct/2021 09:07:04] "GET /serviceTemplateName/instances HTTP/1.1" 500 84511
+Bad Request: /a/topology
+[17/Oct/2021 09:07:06] "GET /a/topology HTTP/1.1" 400 11
+Internal Server Error: /RealWorld-Application_Angular-Spring-w1/instances/30
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 45, in container_id
+    csar_instance, instance_container =get_csar_instances_containers_id()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_ids.py", line 30, in get_csar_instances_containers_id
+    csar_instance_dict, instance_container_dict = ids()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py", line 20, in ids
+    response = requests.get(url).json().get("service_template_instances")
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/requests/models.py", line 910, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[17/Oct/2021 09:07:08] "GET /RealWorld-Application_Angular-Spring-w1/instances/30 HTTP/1.1" 500 84631
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1', 'MyTinyToDo-MySql_Docker-w1', 'RealWorld-Application_Angular-Spring-w1']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:06:47
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[17/Oct/2021 09:07:34] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+Internal Server Error: /RealWorld-Application_Angular-Spring-w1/instances/30
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 45, in container_id
+    csar_instance, instance_container =get_csar_instances_containers_id()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_ids.py", line 30, in get_csar_instances_containers_id
+    csar_instance_dict, instance_container_dict = ids()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py", line 20, in ids
+    response = requests.get(url).json().get("service_template_instances")
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/requests/models.py", line 910, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[17/Oct/2021 09:07:37] "GET /RealWorld-Application_Angular-Spring-w1/instances/30 HTTP/1.1" 500 84631
+Internal Server Error: /RealWorld-Application_Angular-Spring-w1/instances
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 36, in instance
+    csar_instance, instance_container =get_csar_instances_containers_id()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_ids.py", line 30, in get_csar_instances_containers_id
+    csar_instance_dict, instance_container_dict = ids()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py", line 20, in ids
+    response = requests.get(url).json().get("service_template_instances")
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/requests/models.py", line 910, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[17/Oct/2021 09:07:47] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 500 84731
+[17/Oct/2021 09:07:47] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:07:47] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+Internal Server Error: /RealWorld-Application_Angular-Spring-w1/instances
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 36, in instance
+    csar_instance, instance_container =get_csar_instances_containers_id()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_ids.py", line 30, in get_csar_instances_containers_id
+    csar_instance_dict, instance_container_dict = ids()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py", line 20, in ids
+    response = requests.get(url).json().get("service_template_instances")
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/requests/models.py", line 910, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[17/Oct/2021 09:07:48] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 500 84310
+Internal Server Error: /RealWorld-Application_Angular-Spring-w1/instances
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 36, in instance
+    csar_instance, instance_container =get_csar_instances_containers_id()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_ids.py", line 30, in get_csar_instances_containers_id
+    csar_instance_dict, instance_container_dict = ids()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py", line 20, in ids
+    response = requests.get(url).json().get("service_template_instances")
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/requests/models.py", line 910, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[17/Oct/2021 09:07:56] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 500 84705
+[17/Oct/2021 09:07:56] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1', 'MyTinyToDo-MySql_Docker-w1', 'RealWorld-Application_Angular-Spring-w1']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:07:33
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1', 'MyTinyToDo-MySql_Docker-w1', 'RealWorld-Application_Angular-Spring-w1']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:09:10
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[17/Oct/2021 09:09:44] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:09:45] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:09:47] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:09:28
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[17/Oct/2021 09:10:18] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+Bad Request: /a/topology
+[17/Oct/2021 09:10:21] "GET /a/topology HTTP/1.1" 400 11
+[17/Oct/2021 09:10:23] "GET /RealWorld-Application_Angular-Spring-w1/topology HTTP/1.1" 200 779
+[17/Oct/2021 09:10:33] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:10:33] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:10:36] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:10:37] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:11:02] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:11:03] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:11:04] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:11:04] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:12:04] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:12:04] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:12:07] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:10:14
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:12:16
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[17/Oct/2021 09:12:38] "GET /RealWorld-Application_Angular-Spring-w1/topology HTTP/1.1" 200 779
+Bad Request: /a/topology
+[17/Oct/2021 09:12:40] "GET /a/topology HTTP/1.1" 400 11
+[17/Oct/2021 09:12:42] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 53, in service_template
+    return HttpResponse(json.dumps(services()), status = status.HTTP_200_OK)
+NameError: name 'services' is not defined
+[17/Oct/2021 09:12:44] "GET / HTTP/1.1" 500 58837
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 53, in service_template
+    return HttpResponse(json.dumps(services()), status = status.HTTP_200_OK)
+NameError: name 'services' is not defined
+[17/Oct/2021 09:12:52] "GET / HTTP/1.1" 500 59369
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:12:34
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[17/Oct/2021 09:13:13] "GET / HTTP/1.1" 200 120
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:13:07
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[17/Oct/2021 09:13:50] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 09:14:14] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:14:15] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:14:16] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:14:17] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:14:27] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:14:52] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:14:53] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:15:30] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:15:33] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:15:40] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:15:41] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:16:45] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:16:50] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:16:50] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:16:50] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:16:51] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:17:12] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:17:13] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:17:39] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_id.py changed, reloading.
+Performing system checks...
+
+['PetClinic_MySQL-OpenStack-w1.csar', 'MyTinyToDo-MySql_Docker-w1.csar', 'RealWorld-Application_Angular-Spring-w1.csar']
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:13:42
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[17/Oct/2021 09:17:49] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:17:55] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:17:57] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:18:04] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:17:40
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/management/commands/runserver.py", line 118, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/management/base.py", line 419, in check
+    all_issues = checks.run_checks(
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/registry.py", line 76, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/urls.py", line 13, in check_url_config
+    return check_resolver(resolver)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/urls.py", line 23, in check_resolver
+    return check_method()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 412, in check
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 598, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 591, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/st/urls.py", line 21, in <module>
+    path('', include('service.urls'), name = 'servicetemplate'),
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/urls.py", line 3, in <module>
+    from . import views
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 54
+    def 
+       ^
+SyntaxError: invalid syntax
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/management/commands/runserver.py", line 118, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/management/base.py", line 419, in check
+    all_issues = checks.run_checks(
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/registry.py", line 76, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/urls.py", line 13, in check_url_config
+    return check_resolver(resolver)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/urls.py", line 23, in check_resolver
+    return check_method()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 412, in check
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 598, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 591, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/st/urls.py", line 21, in <module>
+    path('', include('service.urls'), name = 'servicetemplate'),
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/urls.py", line 3, in <module>
+    from . import views
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 52
+    def 
+       ^
+SyntaxError: invalid syntax
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/management/commands/runserver.py", line 118, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/management/base.py", line 419, in check
+    all_issues = checks.run_checks(
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/registry.py", line 76, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/urls.py", line 13, in check_url_config
+    return check_resolver(resolver)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/checks/urls.py", line 23, in check_resolver
+    return check_method()
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 412, in check
+    for pattern in self.url_patterns:
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 598, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/resolvers.py", line 591, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/st/urls.py", line 21, in <module>
+    path('', include('service.urls'), name = 'servicetemplate'),
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/urls.py", line 3, in <module>
+    from . import views
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 52
+    def 
+       ^
+SyntaxError: invalid syntax
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+Watching for file changes with StatReloader
+[17/Oct/2021 09:43:21] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 09:43:28] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 09:43:28] "GET / HTTP/1.1" 200 105
+Not Found: /favicon.ico
+[17/Oct/2021 09:43:28] "GET /favicon.ico HTTP/1.1" 404 2862
+[17/Oct/2021 09:43:34] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 09:43:34] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:43:09
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[17/Oct/2021 09:44:03] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 09:44:03] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:12] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:12] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:12] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 09:44:42] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:42] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:42] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 09:44:46] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:47] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 09:44:49] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:50] "GET /PetClinic_MySQL-OpenStack-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:44:50] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:44:50] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:50] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:44:50] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:50] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:50] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:51] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:44:51] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:44:51] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:51] "GET /PetClinic_MySQL-OpenStack-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:44:51] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:51] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:51] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:52] "GET /PetClinic_MySQL-OpenStack-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:44:52] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:44:52] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:52] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:44:52] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:44:52] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:03] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:03] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:45:03] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:45:03] "GET /PetClinic_MySQL-OpenStack-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:45:03] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:03] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:03] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:04] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:45:04] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:04] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:45:04] "GET /PetClinic_MySQL-OpenStack-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:45:04] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:04] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:04] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:04] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:45:04] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:45:04] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:04] "GET /PetClinic_MySQL-OpenStack-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:45:04] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:04] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:06] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:14] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:14] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:45:14] "GET /PetClinic_MySQL-OpenStack-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:45:14] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:14] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:45:14] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:16] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:16] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:45:16] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 09:45:16] "GET /PetClinic_MySQL-OpenStack-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 09:45:16] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:17] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:17] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:45:17] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:47:05] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 09:47:05] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:47:06] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:44:00
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/urls.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:47:38
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/urls.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:48:24
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+Not Found: /RealWorld-Application_Angular-Spring-w1/
+[17/Oct/2021 09:48:39] "GET /RealWorld-Application_Angular-Spring-w1/ HTTP/1.1" 404 3119
+Not Found: /RealWorld-Application_Angular-Spring-w1/
+[17/Oct/2021 09:48:50] "GET /RealWorld-Application_Angular-Spring-w1/ HTTP/1.1" 404 3119
+Bad Request: /RealWorld-Application_Angular-Spring-w1
+[17/Oct/2021 09:49:03] "GET /RealWorld-Application_Angular-Spring-w1 HTTP/1.1" 400 11
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:48:28
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+Internal Server Error: /RealWorld-Application_Angular-Spring-w1
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 55, in total
+    for i in csar_instance[service_tmp]:
+KeyError: 'RealWorld-Application_Angular-Spring-w1'
+[17/Oct/2021 09:49:23] "GET /RealWorld-Application_Angular-Spring-w1 HTTP/1.1" 500 61552
+/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 17, 2021 - 09:49:21
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+Internal Server Error: /RealWorld-Application_Angular-Spring-w1
+Traceback (most recent call last):
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/mv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/views.py", line 55, in total
+    for i in csar_instance[service_tmp]:
+KeyError: 'RealWorld-Application_Angular-Spring-w1'
+[17/Oct/2021 09:50:52] "GET /RealWorld-Application_Angular-Spring-w1 HTTP/1.1" 500 61554
+[17/Oct/2021 09:50:53] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 09:50:53] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[17/Oct/2021 09:50:53] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+Watching for file changes with StatReloader
+[17/Oct/2021 10:21:42] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 10:21:43] "GET /PetClinic_MySQL-OpenStack-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 10:21:43] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
+[17/Oct/2021 10:21:43] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[17/Oct/2021 10:21:54] "GET /RealWorld-Application_Angular-Spring-w1/topology HTTP/1.1" 200 779
+[17/Oct/2021 13:53:27,184] - Broken pipe from ('162.142.125.193', 59476)
+
+[17/Oct/2021 13:53:28] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 13:53:28,847] - Broken pipe from ('162.142.125.193', 60042)
+
+[17/Oct/2021 13:53:29] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 15:37:38] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 19:51:42,476] - Broken pipe from ('167.94.138.59', 47904)
+
+[17/Oct/2021 19:51:43] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 19:51:43,879] - Broken pipe from ('167.94.138.59', 46100)
+
+[17/Oct/2021 19:51:44] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 22:51:18] "GET / HTTP/1.1" 200 105
+[17/Oct/2021 22:51:18,259] - Broken pipe from ('162.142.125.195', 52398)
+
+[17/Oct/2021 22:51:18] "GET / HTTP/1.1" 200 105
+[18/Oct/2021 04:04:56] "GET / HTTP/1.1" 200 105
+[18/Oct/2021 07:37:25] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[18/Oct/2021 07:37:25] "  /*à     Cookie: mstshash=Administr" 400 -
+[18/Oct/2021 07:48:48] code 400, message Bad request version ('À\x14À')
+[18/Oct/2021 07:48:48] You're accessing the development server over HTTPS, but it only supports HTTP.
+
+[18/Oct/2021 09:23:28] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[18/Oct/2021 09:23:28] "  /*à     Cookie: mstshash=Administr" 400 -
+[18/Oct/2021 10:58:49] code 400, message Bad request version ('À\x14À')
+[18/Oct/2021 10:58:49] You're accessing the development server over HTTPS, but it only supports HTTP.
+
+[18/Oct/2021 11:03:40] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00{\x01\x00\x00w\x03\x03PVx\x05¸»û\x12ý\x9d\x10e\x18Ò×ãuý*^xowDïÉÝQO\x82\x1a'\x00\x00\x1aÀ/À+À\x11À\x07À\x13À")
+[18/Oct/2021 11:03:40] You're accessing the development server over HTTPS, but it only supports HTTP.
+
+[18/Oct/2021 11:34:50,419] - Broken pipe from ('104.131.5.111', 61000)
+
+[18/Oct/2021 16:52:46] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00')
+[18/Oct/2021 16:52:46] "    c                           " 400 -
+[18/Oct/2021 17:10:18] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00')
+[18/Oct/2021 17:10:18] "    c                           " 400 -
+[18/Oct/2021 18:32:12,024] - Broken pipe from ('162.142.125.57', 33004)
+
+[18/Oct/2021 18:32:13] "GET / HTTP/1.1" 200 105
+[18/Oct/2021 18:32:13,544] - Broken pipe from ('162.142.125.57', 53624)
+
+[18/Oct/2021 18:32:13] "GET / HTTP/1.1" 200 105
+[18/Oct/2021 22:32:57] "GET / HTTP/1.1" 200 105
+[19/Oct/2021 00:15:40] "GET / HTTP/1.1" 200 105
+[19/Oct/2021 01:54:35] "GET / HTTP/1.1" 200 105
+[19/Oct/2021 03:36:45] "GET / HTTP/1.0" 200 105
+[19/Oct/2021 06:28:56,249] - Broken pipe from ('162.142.125.195', 60584)
+
+[19/Oct/2021 06:28:59] "GET / HTTP/1.1" 200 105
+[19/Oct/2021 06:29:00,135] - Broken pipe from ('162.142.125.195', 54818)
+
+[19/Oct/2021 06:29:00] "GET / HTTP/1.1" 200 105
+[19/Oct/2021 07:52:43] code 400, message Bad request version ('À\x14À')
+[19/Oct/2021 07:52:43] You're accessing the development server over HTTPS, but it only supports HTTP.
+
+[19/Oct/2021 09:45:55] "GET / HTTP/1.1" 200 105
+[19/Oct/2021 11:19:51] "GET / HTTP/1.1" 200 105
+[19/Oct/2021 11:22:47] "GET / HTTP/1.1" 200 105
+[19/Oct/2021 11:22:48] "GET /PetClinic_MySQL-OpenStack-w1/instances HTTP/1.1" 200 2
+[19/Oct/2021 11:22:48] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
+[19/Oct/2021 11:22:48] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[19/Oct/2021 11:22:59] "GET / HTTP/1.1" 200 105
+[19/Oct/2021 11:22:59] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
+[19/Oct/2021 11:22:59] "GET /PetClinic_MySQL-OpenStack-w1/instances HTTP/1.1" 200 2
+[19/Oct/2021 11:22:59] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
