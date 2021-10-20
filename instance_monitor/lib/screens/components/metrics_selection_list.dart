@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instance_monitor/constants.dart';
 import 'package:instance_monitor/enums/metric_type.dart';
-import 'package:instance_monitor/providers/hierarchy_provider.dart';
 import 'package:instance_monitor/screens/components/selectable_metric_type.dart';
-import 'package:provider/provider.dart';
 
 class MetricsSelectionList extends StatelessWidget {
   @override
@@ -13,11 +11,7 @@ class MetricsSelectionList extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          TextButton.icon(
-            onPressed: () => _onPressedRefreshButton(context),
-            label: Text('click to refresh', style: TextStyle(color: Colors.white)),
-            icon: Icon(Icons.refresh),
-          ),
+          Text('available metrics >', style: TextStyle(color: Colors.white)),
           SizedBox(width: defaultSpacing),
           Expanded(
             child: ListView.separated(
@@ -37,12 +31,5 @@ class MetricsSelectionList extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  void _onPressedRefreshButton(BuildContext context) {
-    HierarchyProvider hierarchyProvider = context.read<HierarchyProvider>();
-
-    String selectedContainerId = hierarchyProvider.selectedContainerId;
-    hierarchyProvider.loadSingleContainerMetrics(containerId: selectedContainerId);
   }
 }

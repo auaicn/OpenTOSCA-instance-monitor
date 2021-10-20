@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:instance_monitor/constants.dart';
 import 'package:instance_monitor/providers/hierarchy_provider.dart';
+import 'package:instance_monitor/providers/metrics_provider.dart';
 import 'package:instance_monitor/providers/topology_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +14,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => HierarchyProvider()),
         ChangeNotifierProvider(create: (_) => TopologyProvider()),
+        ChangeNotifierProvider(create: (_) => MetricsProvider()),
       ],
       child: App(),
     ),

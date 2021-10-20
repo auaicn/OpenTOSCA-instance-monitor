@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instance_monitor/constants.dart';
-import 'package:instance_monitor/enums/metric_type.dart';
 import 'package:instance_monitor/providers/hierarchy_provider.dart';
 import 'package:instance_monitor/screens/components/metrics_selection_list.dart';
 import 'package:instance_monitor/screens/panels/graph_panel.dart';

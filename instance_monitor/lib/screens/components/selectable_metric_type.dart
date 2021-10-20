@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instance_monitor/constants.dart';
 import 'package:instance_monitor/enums/metric_type.dart';
-import 'package:instance_monitor/providers/hierarchy_provider.dart';
+import 'package:instance_monitor/providers/metrics_provider.dart';
 import 'package:provider/provider.dart';
 
 class SelectableMetricTypeCard extends StatelessWidget {
@@ -13,9 +13,9 @@ class SelectableMetricTypeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HierarchyProvider>(
-      builder: (context, hierarchy, child) {
-        bool isSelected = metricType == hierarchy.selectedMetricType;
+    return Consumer<MetricsProvider>(
+      builder: (context, metricsProvider, child) {
+        bool isSelected = metricType == metricsProvider.selectedMetricType;
 
         return GestureDetector(
           onTap: () => _onTappedMetricTypeButton(context),
@@ -38,8 +38,8 @@ class SelectableMetricTypeCard extends StatelessWidget {
   }
 
   void _onTappedMetricTypeButton(BuildContext context) {
-    HierarchyProvider hierarchyProvider = context.read<HierarchyProvider>();
+    MetricsProvider metricsProvider = context.read<MetricsProvider>();
 
-    hierarchyProvider.updateSelectedMetricType(selectedMetricType: metricType);
+    metricsProvider.updateSelectedMetricType(selectedMetricType: metricType);
   }
 }
