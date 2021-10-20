@@ -7,8 +7,6 @@ import 'package:instance_monitor/screens/panels/information_panel.dart';
 import 'package:instance_monitor/utilities/http_client.dart';
 
 class TopologyProvider extends ChangeNotifier {
-  Map _topology = {};
-
   SugiyamaConfiguration builder = SugiyamaConfiguration();
   Map<String, NodeWithLabel> nodeById = {};
 
@@ -18,7 +16,7 @@ class TopologyProvider extends ChangeNotifier {
     _initializeBuilder();
   }
 
-  Future loadSelectedTopology({@required String serviceTemplateName}) {
+  void loadSelectedTopology({@required String serviceTemplateName}) {
     _loadTopology(serviceTemplateName).then((topology) {
       _drawGraph(topology);
     });

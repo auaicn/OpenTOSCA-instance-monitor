@@ -1,11 +1,13 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:instance_monitor/constants.dart';
-import 'package:instance_monitor/logger.dart';
+import 'package:instance_monitor/providers/hierarchy_provider.dart';
+import 'package:instance_monitor/screens/panels/container_selection_panel.dart';
+import 'package:instance_monitor/screens/panels/graph_panel.dart';
+import 'package:instance_monitor/screens/panels/metrics_panel.dart';
 import 'package:instance_monitor/utilities/http_client.dart';
+import 'package:provider/provider.dart';
 
 class InformationPanel extends StatefulWidget {
   @override
@@ -17,48 +19,29 @@ class _InformationPanelState extends State<InformationPanel> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(defaultPadding),
-      color: Colors.black12,
-      width: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(child: Text('Detailed Informations')),
-          SizedBox(height: defaultSpacing),
-          TextButton(
-            onPressed: fetchAvailableContainers,
-            child: Text('request'),
-          ),
-          SizedBox(height: defaultSpacing),
-          Expanded(
-            child: Container(
-              child: Center(
-                child: FutureBuilder<Response>(
-                  future: containers,
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (!snapshot.hasData) {
-                      return CupertinoActivityIndicator();
-                    } else if (snapshot.hasData) {
-                      Response value = snapshot.data;
-                      var decodedResponseBody = jsonDecode(utf8.decode(value.bodyBytes));
-                      JsonEncoder encoder = new JsonEncoder.withIndent('  ');
-                      var containers = encoder.convert(decodedResponseBody);
-                      return Text(
-                        '$containers',
-                        style: Theme.of(context).textTheme.bodyText1.apply(color: Colors.brown),
-                      );
-                    } else {
-                      logger.e('while fetching containers');
-                      return Container(color: Colors.red);
-                    }
-                  },
+    return Consumer<HierarchyProvider>(
+      builder: (context, hierarchy, child) {
+        return Container(
+          padding: EdgeInsets.all(defaultPadding),
+          color: Colors.black12,
+          width: double.infinity,
+          child: Visibility(
+            visible: hierarchy.selectedInstanceId != null,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: ContainerSelectionPanel(),
                 ),
-              ),
+                Expanded(
+                  flex: 8,
+                  child: MetricsPanel(),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:instance_monitor/constants.dart';
-import 'package:instance_monitor/logger.dart';
 import 'package:instance_monitor/providers/hierarchy_provider.dart';
 import 'package:instance_monitor/providers/topology_provider.dart';
 import 'package:provider/provider.dart';
@@ -57,7 +56,6 @@ class InstanceSelectionPanel extends StatelessWidget {
                   },
                   itemBuilder: (BuildContext context, int index) {
                     String instanceId = instanceIds[index];
-                    logger.i('instance id: $instanceId');
 
                     return ListTile(
                       selected: instanceId == hierarchyProvider.selectedInstanceId,
@@ -75,7 +73,7 @@ class InstanceSelectionPanel extends StatelessWidget {
                         ),
                       ),
                       onTap: () {
-                        hierarchyProvider.updateInstanceId(selectedInstanceId: instanceId);
+                        hierarchyProvider.updateSelectedInstanceId(selectedInstanceId: instanceId);
                       },
                     );
                   },

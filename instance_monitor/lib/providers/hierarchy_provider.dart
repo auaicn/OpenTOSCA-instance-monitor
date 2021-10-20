@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:instance_monitor/enums/metric_type.dart';
+import 'package:instance_monitor/models/container_status.dart';
 import 'package:instance_monitor/screens/panels/information_panel.dart';
 import 'package:instance_monitor/utilities/http_client.dart';
 
@@ -10,6 +12,9 @@ class HierarchyProvider extends ChangeNotifier {
   String selectedServiceTemplate;
   String selectedInstanceId;
   String selectedContainerId;
+  MetricType selectedMetricType;
+
+  bool hideInstanceSelectionPanel = false;
 
   List<String> containerIds = [];
 
@@ -52,7 +57,7 @@ class HierarchyProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateServiceTemplate({@required String selectedServiceTemplate}) {
+  void updateSelectedServiceTemplate({@required String selectedServiceTemplate}) {
     if (this.selectedServiceTemplate == selectedServiceTemplate) {
       return;
     }
@@ -64,19 +69,19 @@ class HierarchyProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateInstanceId({@required String selectedInstanceId}) async {
+  void updateSelectedInstanceId({@required String selectedInstanceId}) {
     if (this.selectedInstanceId == selectedInstanceId) {
       return;
     }
 
     this.selectedInstanceId = selectedInstanceId;
     this.selectedContainerId = null;
-    await _loadContainerIds();
 
-    notifyListeners();
+    // TODO - make it initially invoked
+    _loadContainerIds().then((_) => notifyListeners());
   }
 
-  void updateContainerId({@required String selectedInstanceId}) {
+  void updateSelectedContainerId({@required String selectedContainerId}) {
     if (this.selectedContainerId == selectedContainerId) {
       return;
     }
@@ -86,7 +91,21 @@ class HierarchyProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void _loadContainerIds() async {
+  void updateSelectedMetricType({@required MetricType selectedMetricType}) {
+    if (this.selectedMetricType == selectedMetricType) {
+      return;
+    }
+
+    this.selectedMetricType = selectedMetricType;
+    notifyListeners();
+  }
+
+  void flipHideInstanceSelectionPanel() {
+    hideInstanceSelectionPanel = !hideInstanceSelectionPanel;
+    notifyListeners();
+  }
+
+  Future _loadContainerIds() async {
     String target = '${serverUrlUsingPort(port: 8000)}/$selectedServiceTemplate/instances/$selectedInstanceId';
     Uri uri = Uri.parse(target);
     var response = await loggerHttpClient.get(uri);
@@ -96,13 +115,17 @@ class HierarchyProvider extends ChangeNotifier {
     json.forEach((containerId) {
       containerIds.add(containerId);
     });
+    return;
   }
 
-  void _loadSingleContainerMetrics() async {
+  // TODO - make this periodically invoked and saved.
+  Future<ContainerStatus> loadSingleContainerMetrics({@required String containerId}) async {
     String target = '${serverUrlUsingPort(port: 2220)}/containers/$selectedContainerId/stats?stream=false';
     Uri uri = Uri.parse(target);
     var response = await loggerHttpClient.get(uri);
     Map json = jsonDecode(utf8.decode(response.bodyBytes));
+
+    return ContainerStatus.fromJson(json);
   }
 
   bool isServiceTemplateSelected() {
