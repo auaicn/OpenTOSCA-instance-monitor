@@ -7,15 +7,15 @@ import 'package:instance_monitor/models/container_status.dart';
 import 'package:instance_monitor/models/service.dart';
 
 class MetricsProvider extends ChangeNotifier {
-  final Duration fetchPeriod = Duration(seconds: 10);
+  final Duration fetchPeriod = Duration(seconds: 3);
 
   Map<String, List<ContainerStatus>> metrics = {};
 
   MetricType selectedMetricType = MetricType.values.first;
 
-  Future registerServiceForMonitoring({@required Service service}) {
-    service.containerIds.forEach((containerId) {
-      Timer.periodic(fetchPeriod, (Timer t) => _fetchSingleContainerMetricSnapshot(containerId: containerId));
+  void registerServiceForMonitoring({@required Service service}) {
+    service.dockerContainerInformations.forEach((dockerContainerInformation) {
+      Timer.periodic(fetchPeriod, (Timer t) => _fetchSingleContainerMetricSnapshot(containerId: dockerContainerInformation.containerId));
     });
   }
 
@@ -32,6 +32,7 @@ class MetricsProvider extends ChangeNotifier {
       metrics[containerId] = [];
     }
     metrics[containerId].add(metricSnapshot);
+    notifyListeners();
   }
 
   void updateSelectedMetricType({@required MetricType selectedMetricType}) {

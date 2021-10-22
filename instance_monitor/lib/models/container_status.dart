@@ -16,10 +16,10 @@ class ContainerStatus {
   // constructor
   ContainerStatus.fromJson(Map json) {
     containerInformation = ContainerInformation.fromJson(json);
-    setHighLevelMetrics(containerInformation);
+    _setHighLevelMetrics(containerInformation);
   }
 
-  void setHighLevelMetrics(ContainerInformation containerInformation) {
+  void _setHighLevelMetrics(ContainerInformation containerInformation) {
     usedMemory = containerInformation.memoryStats.usage - containerInformation.memoryStats.stats.cache;
     availableMemory = containerInformation.memoryStats.limit;
     cpuDelta = containerInformation.cpuStats.cpuUsage.totalUsage - containerInformation.precpuStats.cpuUsage.totalUsage;

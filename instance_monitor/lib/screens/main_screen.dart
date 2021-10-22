@@ -73,11 +73,11 @@ class _MainScreenState extends State<MainScreen> {
     }
 
     HierarchyProvider hierarchyProvider = context.read<HierarchyProvider>();
-    await hierarchyProvider.loadServices().then((initializedProvider) async {
+    await hierarchyProvider.loadServices().then((initializedHierarchyProvider) async {
       MetricsProvider metricsProvider = context.read<MetricsProvider>();
-      await Future.forEach(initializedProvider.services, (service) async {
-        await service.loadContainerIds().then((_) async {
-          await metricsProvider.registerServiceForMonitoring(service: service);
+      await Future.forEach(initializedHierarchyProvider.services, (service) async {
+        await service.loadContainerInformations().then((_) async {
+          metricsProvider.registerServiceForMonitoring(service: service);
         });
       });
 

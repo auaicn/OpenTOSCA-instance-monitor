@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:instance_monitor/dtos/request/containers_request_dto.dart';
+import 'package:instance_monitor/dtos/request/containers_request_dto_v2.dart';
 
 class Service {
   String serviceTemplate;
   String instanceId;
-  List<String> containerIds;
+  List<NodeInformation> dockerContainerInformations;
 
   Service({@required this.serviceTemplate, @required this.instanceId});
 
-  Future loadContainerIds() async {
-    ContainersRequestDto containersRequestDto = ContainersRequestDto(
+  Future loadContainerInformations() async {
+    ContainersRequestDtoV2 containersRequestDtoV2 = ContainersRequestDtoV2(
       serviceTemplateName: this.serviceTemplate,
       instanceId: this.instanceId,
     );
 
-    await containersRequestDto.request().then((containerIds) {
-      this.containerIds = containerIds;
+    await containersRequestDtoV2.request().then((containerNodeInformations) {
+      this.dockerContainerInformations = containerNodeInformations;
     });
   }
 }

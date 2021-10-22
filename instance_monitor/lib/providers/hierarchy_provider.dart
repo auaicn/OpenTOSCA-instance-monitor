@@ -9,7 +9,6 @@ class HierarchyProvider extends ChangeNotifier {
 
   String selectedServiceTemplate;
   String selectedInstanceId;
-  Service selectedService;
   String selectedContainerId;
 
   bool hideInstanceSelectionPanel = false;
@@ -77,6 +76,16 @@ class HierarchyProvider extends ChangeNotifier {
     this.selectedContainerId = selectedContainerId;
 
     notifyListeners();
+  }
+
+  Service getSelectedService() {
+    Service selectedService;
+    services.forEach((service) {
+      if (service.serviceTemplate == selectedServiceTemplate && service.instanceId == selectedInstanceId) {
+        selectedService = service;
+      }
+    });
+    return selectedService;
   }
 
   ///

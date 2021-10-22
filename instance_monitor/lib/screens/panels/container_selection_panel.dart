@@ -8,7 +8,8 @@ class ContainerSelectionPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<HierarchyProvider>(
       builder: (context, hierarchy, child) {
-        var containerIds = hierarchy.selectedService.containerIds;
+        final service = hierarchy.getSelectedService();
+        final dockerContainerInformations = service.dockerContainerInformations;
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -16,7 +17,7 @@ class ContainerSelectionPanel extends StatelessWidget {
             Text('Available Containers'),
             SizedBox(height: defaultHalfSpacing),
             ListView.separated(
-              itemCount: containerIds.length,
+              itemCount: dockerContainerInformations.length,
               shrinkWrap: true,
               separatorBuilder: (BuildContext context, int index) {
                 return Divider(color: Colors.black38, height: 4);
@@ -25,7 +26,7 @@ class ContainerSelectionPanel extends StatelessWidget {
                 return GestureDetector(
                   onTap: () => _onTappedContainerId(context, index),
                   child: Text(
-                    '- ${containerIds[index].substring(0, 12)}',
+                    '- ${dockerContainerInformations[index].topologyLabel}',
                     style: TextStyle(color: Colors.blueAccent),
                   ),
                 );
@@ -39,6 +40,10 @@ class ContainerSelectionPanel extends StatelessWidget {
 
   void _onTappedContainerId(BuildContext context, int index) {
     HierarchyProvider hierarchyProvider = context.read<HierarchyProvider>();
-    hierarchyProvider.updateSelectedContainerId(selectedContainerId: hierarchyProvider.selectedService.containerIds[index]);
+
+    final service = hierarchyProvider.getSelectedService();
+    final dockerContainerInformations = service.dockerContainerInformations;
+
+    hierarchyProvider.updateSelectedContainerId(selectedContainerId: dockerContainerInformations[index].containerId);
   }
 }
