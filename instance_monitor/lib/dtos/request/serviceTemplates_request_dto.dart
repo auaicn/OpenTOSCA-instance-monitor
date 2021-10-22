@@ -7,7 +7,9 @@ class ServiceTemplatesRequestDto {
   Future request() async {
     String target = '$backendServerUri/';
     Uri uri = Uri.parse(target);
-    var response = await loggerHttpClient.get(uri);
+    var response = await loggerHttpClient.get(uri, headers: {
+      "Access-Control-Allow-Origin": "*",
+    });
     List json = jsonDecode(utf8.decode(response.bodyBytes));
     return json;
   }
