@@ -1,33 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:instance_monitor/dtos/request/instances_request_dto.dart';
+import 'package:instance_monitor/dtos/request/serviceTemplates_request_dto.dart';
+import 'package:instance_monitor/models/service.dart';
 
 class HierarchyProvider extends ChangeNotifier {
   Map<String, List<String>> hierarchy = {};
+  List<Service> services = [];
 
   String selectedServiceTemplate;
   String selectedInstanceId;
+  String selectedContainerId;
 
-  HierarchyProvider() {
-    fetchData();
+  bool hideInstanceSelectionPanel = false;
+
+  Future<HierarchyProvider> loadServices() async {
+    this.selectedServiceTemplate = null;
+    this.selectedInstanceId = null;
+
+    this.hierarchy.clear();
+    this.services.clear();
+    await ServiceTemplatesRequestDto().request().then((serviceTemplates) async {
+      await Future.forEach(serviceTemplates, (serviceTemplateName) async {
+        if (hierarchy[serviceTemplateName] == null) {
+          hierarchy[serviceTemplateName] = [];
+        }
+
+        await InstancesRequestDto(serviceTemplateName: (serviceTemplateName as String)).request().then((intanceIds) async {
+          await Future.forEach(intanceIds, (instanceId) async {
+            this.services.add(Service(serviceTemplate: serviceTemplateName, instanceId: instanceId.toString()));
+          });
+        });
+      });
+    }).then((_) => _buildHierarchy());
+
+    return this;
   }
 
-  void fetchData() {
+  void _buildHierarchy() {
     hierarchy.clear();
-
-    hierarchyExample.keys.forEach((serviceTemplateKey) {
-      List<int> instanceIds = hierarchyExample[serviceTemplateKey];
-
-      // convert id into string for ease of use
-      hierarchy[serviceTemplateKey] = [...instanceIds.map((instanceId) => instanceId.toString())];
+    services.forEach((service) {
+      if (hierarchy[service.serviceTemplate] == null) {
+        hierarchy[service.serviceTemplate] = [];
+      }
+      hierarchy[service.serviceTemplate].add(service.instanceId);
     });
-
-    selectedServiceTemplate = null;
-    selectedInstanceId = null;
   }
 
-  void updateServiceTemplate({@required String selectedServiceTemplate}) {
+  void updateSelectedServiceTemplate({@required String selectedServiceTemplate}) {
     if (this.selectedServiceTemplate == selectedServiceTemplate) {
-      // do nothing
-
       return;
     }
 
@@ -37,18 +57,40 @@ class HierarchyProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateInstanceId({@required String selectedInstanceId}) {
+  void updateSelectedInstanceId({@required String selectedInstanceId}) {
     if (this.selectedInstanceId == selectedInstanceId) {
-      // do nothing
-
       return;
     }
 
     this.selectedInstanceId = selectedInstanceId;
+    this.selectedContainerId = null;
 
     notifyListeners();
   }
 
+  void updateSelectedContainerId({@required String selectedContainerId}) {
+    if (this.selectedContainerId == selectedContainerId) {
+      return;
+    }
+
+    this.selectedContainerId = selectedContainerId;
+
+    notifyListeners();
+  }
+
+  Service getSelectedService() {
+    Service selectedService;
+    services.forEach((service) {
+      if (service.serviceTemplate == selectedServiceTemplate && service.instanceId == selectedInstanceId) {
+        selectedService = service;
+      }
+    });
+    return selectedService;
+  }
+
+  ///
+  /// below utilities
+  ///
   bool isServiceTemplateSelected() {
     return (this.selectedServiceTemplate != null);
   }
@@ -56,15 +98,9 @@ class HierarchyProvider extends ChangeNotifier {
   bool isInstanceIdSelected() {
     return (this.selectedInstanceId != null);
   }
-}
 
-Map<String, List<int>> hierarchyExample = {
-  'RealWorld-Application_Angular-Spring-w1': [49, 220],
-  'd1_w1-wip1': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-  'd1_w1-wip2': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-  'd1_w1-wip3': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-  'd1_w1-wip4': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-  'd1_w1-wip5': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-  'd1_w1-wip6': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-  'd1_w1-wip7': [13, 144, 171, 1, 2, 3, 24, 35, 62, 77],
-};
+  void flipHideInstanceSelectionPanel() {
+    hideInstanceSelectionPanel = !hideInstanceSelectionPanel;
+    notifyListeners();
+  }
+}

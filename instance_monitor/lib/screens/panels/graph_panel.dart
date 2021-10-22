@@ -1,97 +1,125 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:graphview/GraphView.dart';
+import 'package:instance_monitor/logger.dart';
+import 'package:intl/intl.dart';
+
 import 'package:instance_monitor/constants.dart';
+import 'package:instance_monitor/enums/metric_type.dart';
+import 'package:instance_monitor/models/container_status.dart';
 import 'package:instance_monitor/providers/hierarchy_provider.dart';
-import 'package:instance_monitor/providers/topology_provider.dart';
-import 'package:instance_monitor/screens/components/guide_text.dart';
-import 'package:instance_monitor/screens/components/node_template.dart';
+import 'package:instance_monitor/providers/metrics_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
-import '../components/instance_path.dart';
-
-class GraphPanel extends StatefulWidget {
-  @override
-  State<GraphPanel> createState() => _GraphPanelState();
-}
-
-class _GraphPanelState extends State<GraphPanel> with TickerProviderStateMixin {
-  Animation animation;
-  AnimationController controller;
-
-  @override
-  void initState() {
-    super.initState();
-
-    initializeAnimation();
-  }
-
+class GraphPanel extends StatelessWidget {
+  final int maxNumberOfPoints = 10;
+  List<_SalesData> salesData = [
+    _SalesData('Jan', 35),
+    _SalesData('Feb', 28),
+    _SalesData('Mar', 34),
+    _SalesData('Apr', 32),
+    _SalesData('May', 40),
+  ];
   @override
   Widget build(BuildContext context) {
-    return Consumer2<TopologyProvider, HierarchyProvider>(
-      builder: (context, topologyProvider, hierarchyProvider, child) {
-        controller.value = 0;
-        controller.forward();
-
-        bool isInstanceSelected = (hierarchyProvider.isServiceTemplateSelected() && hierarchyProvider.isInstanceIdSelected());
-
-        if (!isInstanceSelected) {
-          return GuideText();
+    return Consumer2<HierarchyProvider, MetricsProvider>(
+      builder: (context, hierarchy, metrics, child) {
+        MetricType selectedMetricType = metrics.selectedMetricType;
+        String selectedContainerId = hierarchy.selectedContainerId;
+        List<ContainerStatus> wholeContainerMetrics = metrics.metrics[selectedContainerId];
+        if (wholeContainerMetrics == null) {
+          return Center(child: CupertinoActivityIndicator());
         }
 
-        return Container(
-          color: Colors.white10,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              InstancePath(),
-              Expanded(
-                child: FadeTransition(
-                  opacity: animation,
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(defaultPadding),
-                    child: InteractiveViewer(
-                      constrained: false,
-                      boundaryMargin: EdgeInsets.all(400),
-                      minScale: 0.00001,
-                      maxScale: 20.0,
-                      child: Center(
-                        child: GraphView(
-                          graph: topologyProvider.currentGraph,
-                          algorithm: SugiyamaAlgorithm(topologyProvider.builder),
-                          paint: Paint()
-                            ..color = Colors.green
-                            ..strokeWidth = 1
-                            ..style = PaintingStyle.stroke,
-                          builder: (Node node) {
-                            // I can decide what widget should be shown here based on the id
-                            String id = node.key.value;
-                            String label = topologyProvider.nodeById[id].label;
-                            return NodeTemplate(label: label);
-                          },
-                        ),
-                      ),
-                    ),
+        List<ContainerStatus> recentContainerStatuses = wholeContainerMetrics.limitOnlyLastElements(to: maxNumberOfPoints);
+        return Scaffold(
+          body: Padding(
+              padding: EdgeInsets.all(defaultPadding),
+              child: AspectRatio(
+                aspectRatio: 2,
+                child: SfSparkLineChart.custom(
+                  width: 2,
+                  xValueMapper: (int index) => recentContainerStatuses[index].xValueMapper(),
+                  yValueMapper: (int index) => recentContainerStatuses[index].yValueMapper(selectedMetricType: selectedMetricType),
+                  dataCount: recentContainerStatuses.length,
+                  dashArray: [2, 2],
+                  highPointColor: Colors.red,
+                  axisLineColor: Colors.white,
+                  lowPointColor: Colors.blue,
+                  labelDisplayMode: SparkChartLabelDisplayMode.all,
+                  axisCrossesAt: 0,
+                  color: selectedMetricType.color(),
+                  marker: SparkChartMarker(displayMode: SparkChartMarkerDisplayMode.all),
+                  trackball: SparkChartTrackball(
+                    borderWidth: 2,
+                    borderColor: selectedMetricType.color(),
+                    activationMode: SparkChartActivationMode.tap,
+                    tooltipFormatter: handleTooltipFormatter,
                   ),
                 ),
-              ),
-            ],
-          ),
+              )),
         );
       },
     );
   }
 
-  void initializeAnimation() {
-    controller = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1),
-    );
+  String handleTooltipFormatter(TooltipFormatterDetails details) {
+    return details.y.toStringAsFixed(0);
+  }
+}
 
-    animation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(controller);
+class _SalesData {
+  _SalesData(this.year, this.sales);
+
+  final String year;
+  final double sales;
+}
+
+extension Mapper on ContainerStatus {
+  String xValueMapper() {
+    return this.containerInformation.read.toDateTime().toReadableString();
+  }
+
+  num yValueMapper({@required MetricType selectedMetricType}) {
+    switch (selectedMetricType) {
+      case MetricType.USED_MEMORY:
+        return this.usedMemory;
+      case MetricType.AVAILABLE_MEMORY:
+        return this.availableMemory;
+      case MetricType.CPU_DELTA:
+        return this.cpuDelta;
+      case MetricType.SYSTEM_CPU_DELTA:
+        return this.systemCpuDelta;
+      case MetricType.NUMBER_CPUS:
+        return this.numberCpus;
+      case MetricType.MEMORY_USAGE_IN_PERCETAGE:
+        return this.memoryUsageInPercent;
+      case MetricType.CPU_USAGE_IN_PERCETAGE:
+        return this.cpuUsageInPercent;
+      default:
+        return 0;
+    }
+  }
+}
+
+extension DateTimes on String {
+  DateTime toDateTime() {
+    return DateFormat('yyyy-MM-ddThh:mm:ss').parse(this);
+  }
+}
+
+extension ToString on DateTime {
+  String toReadableString() {
+    return DateFormat('yyyy-MM-dd\nhh:mm:ss').format(this);
+  }
+}
+
+extension Limits on List<ContainerStatus> {
+  List limitOnlyLastElements({@required int to}) {
+    if (this.length <= to) {
+      return this;
+    } else {
+      return this.sublist(this.length - to);
+    }
   }
 }

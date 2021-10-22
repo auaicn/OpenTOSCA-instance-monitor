@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instance_monitor/constants.dart';
-import 'package:instance_monitor/logger.dart';
 import 'package:instance_monitor/providers/hierarchy_provider.dart';
+import 'package:instance_monitor/providers/topology_provider.dart';
 import 'package:provider/provider.dart';
 
 /// for selected Service, show available instances
@@ -30,8 +30,8 @@ class InstanceSelectionPanel extends StatelessWidget {
               ),
             ),
           ),
-          Consumer<HierarchyProvider>(
-            builder: (context, hierarchyProvider, child) {
+          Consumer2<HierarchyProvider, TopologyProvider>(
+            builder: (context, hierarchyProvider, topology, child) {
               String selectedServiceTemplate = hierarchyProvider.selectedServiceTemplate;
 
               if (selectedServiceTemplate == null) {
@@ -56,7 +56,6 @@ class InstanceSelectionPanel extends StatelessWidget {
                   },
                   itemBuilder: (BuildContext context, int index) {
                     String instanceId = instanceIds[index];
-                    logger.i('instance id: $instanceId');
 
                     return ListTile(
                       selected: instanceId == hierarchyProvider.selectedInstanceId,
@@ -74,8 +73,7 @@ class InstanceSelectionPanel extends StatelessWidget {
                         ),
                       ),
                       onTap: () {
-                        hierarchyProvider.updateInstanceId(selectedInstanceId: instanceId);
-                        logger.d('pressed $instanceId');
+                        hierarchyProvider.updateSelectedInstanceId(selectedInstanceId: instanceId);
                       },
                     );
                   },
