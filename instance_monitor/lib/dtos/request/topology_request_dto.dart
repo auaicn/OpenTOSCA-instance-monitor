@@ -12,9 +12,7 @@ class TopologyRequestDto {
   Future<Map<String, List>> request() async {
     String target = '$backendServerUri/$serviceTemplateName/topology';
     Uri uri = Uri.parse(target);
-    var response = await loggerHttpClient.get(uri, headers: {
-      "Access-Control-Allow-Origin": "*",
-    });
+    var response = await loggerHttpClient.get(uri);
     Map json = jsonDecode(utf8.decode(response.bodyBytes));
 
     Map<String, List> topology = {};

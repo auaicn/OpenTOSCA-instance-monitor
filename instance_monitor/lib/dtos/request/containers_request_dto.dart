@@ -16,9 +16,7 @@ class ContainersRequestDto {
   Future<List<String>> request() async {
     String target = '$backendServerUri/$serviceTemplateName/instances/$instanceId';
     Uri uri = Uri.parse(target);
-    var response = await loggerHttpClient.get(uri, headers: {
-      "Access-Control-Allow-Origin": "*",
-    });
+    var response = await loggerHttpClient.get(uri);
     List<String> json = (jsonDecode(utf8.decode(response.bodyBytes)) as List).cast<String>();
     return json;
   }

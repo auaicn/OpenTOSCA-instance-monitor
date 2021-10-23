@@ -966,3 +966,48 @@ Watching for file changes with StatReloader
 [19/Oct/2021 11:22:59] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
 [19/Oct/2021 11:22:59] "GET /PetClinic_MySQL-OpenStack-w1/instances HTTP/1.1" 200 2
 [19/Oct/2021 11:22:59] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 22, 2021 - 20:12:17
+Django version 3.2.8, using settings 'st.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[22/Oct/2021 20:12:36] "GET / HTTP/1.1" 200 43
+Bad Request: /favicon.ico
+[22/Oct/2021 20:12:36] "GET /favicon.ico HTTP/1.1" 400 11
+[22/Oct/2021 20:12:46] "GET / HTTP/1.1" 200 43
+Bad Request: /favicon.ico
+[22/Oct/2021 20:12:47] "GET /favicon.ico HTTP/1.1" 400 11
+[22/Oct/2021 20:13:57] "GET / HTTP/1.1" 200 43
+[22/Oct/2021 20:13:57] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[22/Oct/2021 20:13:57] "GET /RealWorld-Application_Angular-Spring-w1/instances/16 HTTP/1.1" 200 136
+[22/Oct/2021 20:16:19] "GET / HTTP/1.1" 200 43
+[22/Oct/2021 20:16:20] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[22/Oct/2021 20:16:20] "GET /RealWorld-Application_Angular-Spring-w1/instances/16 HTTP/1.1" 200 136
+[22/Oct/2021 20:17:35] "GET / HTTP/1.1" 200 43
+Bad Request: /serviceTemplates
+[22/Oct/2021 20:17:40] "GET /serviceTemplates HTTP/1.1" 400 11
+[22/Oct/2021 20:18:34] "GET /RealWorld-Application_Angular-Spring-w1 HTTP/1.1" 200 144
+[22/Oct/2021 20:19:37] "GET /RealWorld-Application_Angular-Spring-w1/topology HTTP/1.1" 200 779
+[22/Oct/2021 20:20:06] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+Not Found: /RealWorld-Application_Angular-Spring-w1/16
+[22/Oct/2021 20:20:46] "GET /RealWorld-Application_Angular-Spring-w1/16 HTTP/1.1" 404 3125
+[22/Oct/2021 20:20:55] "GET /RealWorld-Application_Angular-Spring-w1/instances/16 HTTP/1.1" 200 136
+[22/Oct/2021 20:21:53] "GET /RealWorld-Application_Angular-Spring-w1/instances/16 HTTP/1.1" 200 136
+[22/Oct/2021 21:27:15,189] - Broken pipe from ('167.248.133.44', 51800)
+
+[22/Oct/2021 21:27:16] "GET / HTTP/1.1" 200 43
+[22/Oct/2021 21:27:16,551] - Broken pipe from ('167.248.133.44', 43214)
+
+[22/Oct/2021 21:27:16] "GET / HTTP/1.1" 200 43
+[22/Oct/2021 23:02:57,741] - Broken pipe from ('162.142.125.57', 55182)
+
+[22/Oct/2021 23:02:59] "GET / HTTP/1.1" 200 43
+[22/Oct/2021 23:02:59,290] - Broken pipe from ('162.142.125.57', 35532)
+
+[22/Oct/2021 23:02:59] "GET / HTTP/1.1" 200 43
+[23/Oct/2021 01:41:31] "GET / HTTP/1.1" 200 43
+[23/Oct/2021 01:41:31] "GET /RealWorld-Application_Angular-Spring-w1/instances HTTP/1.1" 200 4
+[23/Oct/2021 01:41:31] "GET /RealWorld-Application_Angular-Spring-w1/instances/16 HTTP/1.1" 200 136

@@ -13,9 +13,7 @@ class ContainerMetricRequestDto {
   Future<ContainerStatus> request() async {
     String target = '$dockerEngineUri/containers/$containerId/stats?stream=false';
     Uri uri = Uri.parse(target);
-    var response = await loggerHttpClient.get(uri, headers: {
-      "Access-Control-Allow-Origin": "*",
-    });
+    var response = await loggerHttpClient.get(uri);
     Map json = jsonDecode(utf8.decode(response.bodyBytes));
 
     return ContainerStatus.fromJson(json);

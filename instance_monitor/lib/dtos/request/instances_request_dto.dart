@@ -14,9 +14,7 @@ class InstancesRequestDto {
   Future request() async {
     String target = '$backendServerUri/$serviceTemplateName/instances';
     Uri uri = Uri.parse(target);
-    var response = await loggerHttpClient.get(uri, headers: {
-      "Access-Control-Allow-Origin": "*",
-    });
+    var response = await loggerHttpClient.get(uri);
     List json = jsonDecode(utf8.decode(response.bodyBytes));
     return json;
   }
