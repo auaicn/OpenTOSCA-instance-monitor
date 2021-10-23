@@ -1085,3 +1085,5 @@ Bad Request: /a/topology
 [23/Oct/2021 11:06:15] "GET /a/topology HTTP/1.1" 400 11
 [23/Oct/2021 11:06:18] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
 [23/Oct/2021 11:06:22] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
+[23/Oct/2021 11:13:38] "GET / HTTP/1.1" 200 105
+[23/Oct/2021 11:13:41] "GET /RealWorld-Application_Angular-Spring-w1 HTTP/1.1" 200 254
