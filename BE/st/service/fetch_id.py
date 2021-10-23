@@ -27,6 +27,6 @@ def ids():
         for tmp in response:
             id = tmp.get("id")
             ret[name].append(id)
-            ret_[id] = []
+            ret_[id] = {}
             
     return ret, ret_

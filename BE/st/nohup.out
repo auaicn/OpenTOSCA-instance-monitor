@@ -1073,3 +1073,15 @@ Traceback (most recent call last):
   File "/home/ubuntu/HYU-2021-Graduation-Project/BE/st/service/fetch_ids.py", line 5, in <module>
     import xmltodict
 ModuleNotFoundError: No module named 'xmltodict'
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+[23/Oct/2021 11:05:40] "GET /RealWorld-Application_Angular-Spring-w1 HTTP/1.1" 200 254
+Bad Request: /favicon.ico
+[23/Oct/2021 11:05:40] "GET /favicon.ico HTTP/1.1" 400 11
+[23/Oct/2021 11:05:46] "GET /RealWorld-Application_Angular-Spring-w1/topology HTTP/1.1" 200 779
+Bad Request: /favicon.ico
+[23/Oct/2021 11:05:46] "GET /favicon.ico HTTP/1.1" 400 11
+Bad Request: /a/topology
+[23/Oct/2021 11:06:15] "GET /a/topology HTTP/1.1" 400 11
+[23/Oct/2021 11:06:18] "GET /MyTinyToDo-MySql_Docker-w1/topology HTTP/1.1" 200 563
+[23/Oct/2021 11:06:22] "GET /MyTinyToDo-MySql_Docker-w1/instances HTTP/1.1" 200 2
