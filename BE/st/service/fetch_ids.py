@@ -2,13 +2,10 @@ from .fetch_id import ids
 import re
 import json
 import subprocess
+import xmltodict
 
-file_name = "container_log.log"
-date_regex = r"20[0-9][0-9]-[0-9][0-9]-[0-3][0-9] "
-time_regex = "\d\d:\d\d:\d\d.\d\d\d"
-
-def read_container_log_file():
-    container = subprocess.getoutput('docker ps -a | grep opentosca_container_1')
+def read_container_log():
+    container = subprocess.getoutput('docker ps -a | grep opentosca_engine-ia_1')
     container = container.split('\n')
 
     if len(container) != 1:
@@ -22,28 +19,34 @@ def read_container_log_file():
         return log
 
 def log_parsing():    
-    log = read_container_log_file()
+    log = read_container_log()
     
-    return re.split(date_regex + time_regex, log)
+    return re.split('----------------------------', log)
 
 def get_csar_instances_containers_id():
     csar_instance_dict, instance_container_dict = ids()
     logs = log_parsing()
 
     for l in logs:
-        if "SERVICEINSTANCEID_URI" in l and "ContainerID" in l:
-            x = re.split(r': ', l)
-            xml_string = x[-1]
-            xml_key = re.findall(r"<key>(.+?)</key>", xml_string)
-            xml_value = re.findall(r"<value>(.+?)</value>", xml_string)
+        if "NODETEMPLATEID_STRING" in l and "SERVICEINSTANCEID_URI" in l:
+            if "ContainerID" in l:
+                x = re.split(r': ', l)
+                xml_string = x[-1]
+                
+                service_instance_uri = re.findall(r"<SERVICEINSTANCEID_URI>(.+?)</SERVICEINSTANCEID_URI>", xml_string)[0]
+                service_instance = int(service_instance_uri.split('/')[-1])
+                
+                node_template = re.findall(r"<NODETEMPLATEID_STRING>(.+?)</NODETEMPLATEID_STRING>", xml_string)[0]
+                container_id = re.findall(r"<ContainerID>(.+?)</ContainerID>", xml_string)[0]
+                
+                if node_template not in instance_container_dict[service_instance]:
+                    instance_container_dict[service_instance][node_template] = container_id
 
-            xml = {xml_key[i] : xml_value[i] for i in range(len(xml_key))}
-            container_id = xml.get("ContainerID")
-
-            x = re.findall(r'SERVICEINSTANCEID_URI=(.+?),', l)
-            uri = x[0].split('/')
-            instance_id = int(uri[-1])
-
-            instance_container_dict[instance_id].append(container_id)
+    for instance in instance_container_dict:
+        tmp = instance_container_dict[instance]
+        instance_container_dict[instance] = [{
+            "topologyLabel": key,
+            "container_id": tmp[key]
+        } for key in tmp]
 
     return csar_instance_dict, instance_container_dict            

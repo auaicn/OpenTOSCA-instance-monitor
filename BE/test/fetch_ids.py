@@ -49,7 +49,4 @@ def get_csar_instances_containers_id():
             "container_id": tmp[key]
         } for key in tmp]
 
-    print(instance_container_dict)
     return csar_instance_dict, instance_container_dict            
-
-get_csar_instances_containers_id()
