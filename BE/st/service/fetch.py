@@ -1,9 +1,12 @@
-import requests
 
-base_url = "http://ec2-13-124-245-193.ap-northeast-2.compute.amazonaws.com:1337/csars/"
+import requests
+import os
+from .hostname import base_url
+
+url = "http://" + base_url + ":1337/csars/"
 
 def csars():
-    response = requests.get(base_url)
+    response = requests.get(url)
     return response.json().get("csars")
 
 def services():
@@ -20,8 +23,8 @@ def ids():
     ret = {}
     ret_ = {}
     for name in instance:
-        url = base_url + name + "/servicetemplates/" + name[:-5] + "/instances/"
-        response = requests.get(url).json().get("service_template_instances")
+        url0 = url + name + "/servicetemplates/" + name[:-5] + "/instances/"
+        response = requests.get(url0).json().get("service_template_instances")
         ret[name] = []
         
         if response is None: continue

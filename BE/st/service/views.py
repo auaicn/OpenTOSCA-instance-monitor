@@ -3,13 +3,15 @@ from django.http import HttpResponse
 from rest_framework import status
 from .topology import get_topology
 from .fetch_ids import get_csar_instances_containers_id
-from .fetch_id import services
+from .fetch import services
+from .hostname import base_url
 import requests
 import json 
+import os
 
 def topology(request, service_tmp):
-    base_url = "http://ec2-13-124-245-193.ap-northeast-2.compute.amazonaws.com:8080/winery/servicetemplates/"
-    service_templates = requests.get(base_url)
+    url = "http://" + base_url + ":8080/winery/servicetemplates/"
+    service_templates = requests.get(url)
     sts = service_templates.json()
 
     select = None
@@ -21,7 +23,7 @@ def topology(request, service_tmp):
     if select is not None:
         namespace = select['namespace'].replace(':', '%253A')
         namespace = namespace.replace('/', '%252F')
-        url = base_url + namespace + '/' + service_tmp + '/xml'
+        url = url + namespace + '/' + service_tmp + '/xml'
         ret = get_topology(url)
 
         return HttpResponse(ret, status = status.HTTP_200_OK)

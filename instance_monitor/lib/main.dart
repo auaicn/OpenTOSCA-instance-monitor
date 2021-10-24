@@ -9,6 +9,12 @@ import 'package:provider/provider.dart';
 import 'screens/main_screen.dart';
 
 void main() {
+  const apiServerPort = String.fromEnvironment('API_SERVER_PORT', defaultValue: '9999'); 
+  const apiServerUri = String.fromEnvironment('PUBLIC_HOSTNAME', defaultValue: '9999'); 
+
+  print('apiServerPort: $apiServerPort');
+  print('apiServerUri: $apiServerUri');
+
   runApp(
     MultiProvider(
       providers: [

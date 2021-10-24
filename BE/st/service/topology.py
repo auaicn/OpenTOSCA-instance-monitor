@@ -1,6 +1,7 @@
 import requests
 import json
 import xml.etree.ElementTree as et
+from .hostname import base_url
 
 def get_xml(url):
     xml = requests.get(url)

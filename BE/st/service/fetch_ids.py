@@ -1,11 +1,13 @@
-from .fetch_id import ids
+from .fetch import ids
+from .hostname import base_url
 import re
 import json
 import subprocess
 import xmltodict
 import requests
+import os
 
-url = "http://ec2-13-124-245-193.ap-northeast-2.compute.amazonaws.com:2220/v1.19/containers/opentosca_engine-ia_1/logs?stderr=1"
+url = "http://" + base_url + ":2220/v1.19/containers/opentosca_engine-ia_1/logs?stderr=1"
 
 def read_container_log():
     response = requests.get(url)
