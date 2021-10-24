@@ -1,12 +1,14 @@
 import requests
 
-base_url = "http://localhost:1337/csars/"
+base_url = "http://ec2-13-124-245-193.ap-northeast-2.compute.amazonaws.com:1337/csars/"
 
 def csars():
     response = requests.get(base_url)
     return response.json().get("csars")
 
 def services():
+    if csars() is None:
+        return []
     return [t.get("id")[:-5] for t in csars()]
 
 def instances():

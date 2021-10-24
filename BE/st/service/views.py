@@ -8,7 +8,7 @@ import requests
 import json 
 
 def topology(request, service_tmp):
-    base_url = "http://localhost:8080/winery/servicetemplates/"
+    base_url = "http://ec2-13-124-245-193.ap-northeast-2.compute.amazonaws.com:8080/winery/servicetemplates/"
     service_templates = requests.get(base_url)
     sts = service_templates.json()
 

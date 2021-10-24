@@ -3,20 +3,19 @@ import re
 import json
 import subprocess
 import xmltodict
+import requests
+
+url = "http://ec2-13-124-245-193.ap-northeast-2.compute.amazonaws.com:2220/v1.19/containers/opentosca_engine-ia_1/logs?stderr=1"
 
 def read_container_log():
-    container = subprocess.getoutput('docker ps -a | grep opentosca_engine-ia_1')
-    container = container.split('\n')
-
-    if len(container) != 1:
-        print('multiple engine-ia container is detected. quitting....')
+    response = requests.get(url)
+    
+    if response.status_code != 200:
+        print("container log api error....")
         exit()
 
-    else:
-        container_container_id = container[0].split()[0]
-        cmd = 'docker logs ' + container_container_id
-        log = subprocess.getoutput(cmd)
-        return log
+    log = response.text
+    return log
 
 def log_parsing():    
     log = read_container_log()
@@ -26,10 +25,10 @@ def log_parsing():
 def get_csar_instances_containers_id():
     csar_instance_dict, instance_container_dict = ids()
     logs = log_parsing()
-
     for l in logs:
         if "NODETEMPLATEID_STRING" in l and "SERVICEINSTANCEID_URI" in l:
             if "ContainerID" in l:
+                print(l)
                 x = re.split(r': ', l)
                 xml_string = x[-1]
                 
@@ -46,7 +45,7 @@ def get_csar_instances_containers_id():
         tmp = instance_container_dict[instance]
         instance_container_dict[instance] = [{
             "topologyLabel": key,
-            "container_id": tmp[key]
+            "containerId": tmp[key]
         } for key in tmp]
 
     return csar_instance_dict, instance_container_dict            
